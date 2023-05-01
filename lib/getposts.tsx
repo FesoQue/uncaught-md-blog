@@ -22,7 +22,7 @@ const getPostMetadata = (): PostMetaSchema[] => {
   return posts;
 };
 
-const getPostContent = (slug: string) => {
+export const getPostContent = (slug: string) => {
   const folder = "posts/";
   const file = `${folder}${slug}.md`;
   const content = fs.readFileSync(file, "utf8");

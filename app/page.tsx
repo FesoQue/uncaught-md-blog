@@ -1,12 +1,10 @@
-import getPostMetadata from "@/lib/getposts";
 import Link from "next/link";
+import React from "react";
+import getPostMetadata from "@/lib/getposts";
 
-export const page = () => {
+const Home = () => {
   return (
-    <div
-      className="border border-slate-300 p-4 rounded-md shadow-sm
-    bg-red-600"
-    >
+    <div className="border border-slate-300 p-4 rounded-md shadow-sm">
       {getPostMetadata().map((post, i) => {
         return (
           <div key={i}>
@@ -24,3 +22,5 @@ export const page = () => {
     </div>
   );
 };
+
+export default Home;
