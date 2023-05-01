@@ -14,3 +14,9 @@
 body {
   background: #3e433e;
 }
+.post-card {
+  transition: all 400ms ease-in-out;
+}
+.post-card:hover h2 {
+  text-decoration: underline;
+}
