@@ -14,9 +14,29 @@
 body {
   background: #3e433e;
 }
+/* .post-card-wrapper {
+  --dark-purple: "4 6 22";
+  --light-purple: "120 119 198";
+  --bg-color: "linear-gradient(rgb(var(--dark-purple)), rgb(var(--dark-purple)))";
+  --border-color: `linear-gradient(
+    145deg,
+    rgb(var(--light-purple)) 0%,
+    rgb(var(--light-purple) / 0.3) 33.33%,
+    rgb(var(--light-purple) / 0.14) 66.67%,
+    rgb(var(--light-purple) / 0.1) 100%
+  );
+} */
 .post-card {
   transition: all 400ms ease-in-out;
 }
 .post-card:hover h2 {
   text-decoration: underline;
+}
+.post-card button span {
+  opacity: 0;
+  transition: opacity 400ms ease-out;
+}
+.post-card:hover button span {
+  opacity: 1;
+  /* color: rgb(249, 248, 113) */
 }
