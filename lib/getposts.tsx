@@ -1,7 +1,6 @@
 import fs from "fs";
 import matter from "gray-matter";
 import { PostMetaType } from "@/types";
-import { notFound } from "next/navigation";
 
 const getPostMetadata = (): PostMetaType[] => {
   const folder = "posts/";
@@ -27,10 +26,7 @@ const getPostMetadata = (): PostMetaType[] => {
 export const getPostContent = async (slug: string) => {
   const folder = "posts/";
   const file = `${folder}${slug}.md`;
-  const content = fs?.readFileSync(file, "utf8");
-  if (!content) {
-    return notFound();
-  }
+  const content = fs.readFileSync(file, "utf8");
   const matterResult = matter(content);
   return matterResult;
 };

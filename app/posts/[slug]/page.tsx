@@ -1,8 +1,10 @@
-import Markdown from "markdown-to-jsx";
 import getPostMetadata, { getPostContent } from "@/lib/getposts";
 import { PageProps } from "@/types";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import Markdown from "markdown-to-jsx";
+import remarkGfm from "remark-gfm";
 
 export async function generateMetadata({
   params,
@@ -40,13 +42,16 @@ const PostPage = async ({ params }: PageProps) => {
         <p className="text-[#E9C7A5] mt-2">{post.data.date}</p>
       </div>
 
-      <article className="prose max-w-none prose-p:text-[#FCFCFC] prose-a:text-[#FCFCFC] prose-h2:text-[#E9C7A5]">
-        <div className="">
-          <Markdown>{post.content}</Markdown>
-        </div>
+      <article className="prose max-w-none prose-p:text-[#FCFCFC] prose-a:text-[#FCFCFC] prose-h1:text-[#E9C7A5] prose-h2:text-[#E9C7A5] prose-h3:text-[#E9C7A5] prose-h4:text-[#E9C7A5] prose-strong:text-[#FCFCFC] prose-code:text-[#F2CA27] prose-li:text-[#fcfcfc] prose-th:text-[#fcfcfc] prose-td:text-[#fcfcfc]">
+        <article className="prose max-w-3xl mx-auto">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {post.content}
+          </ReactMarkdown>
+        </article>
       </article>
     </div>
   );
+  //   prose-code:text-[#DE4A3B]
 };
 
 export default PostPage;
