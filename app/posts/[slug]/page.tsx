@@ -2,7 +2,6 @@ import fs from "fs";
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 import getPostMetadata from "@/lib/getposts";
-// import { getPostContent } from "@/lib/getposts";
 
 const getPostContent = (slug: string) => {
   const folder = "posts/";
@@ -12,29 +11,19 @@ const getPostContent = (slug: string) => {
   return matterResult;
 };
 
-interface PageProps {
-  params: {
-    slug: string[];
-  };
-}
+export const generateStaticParams = async () => {
+  const posts = getPostMetadata();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+};
 
-// export const generateStaticParams = async () => {
-//   const posts = getPostMetadata();
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }));
-// };
-
-const PostPage = ({ params }: PageProps) => {
-  console.log(params);
-
-  //   const slug = props.params.slug;
-  //   console.log(slug);
-
-  //   const post = getPostContent(slug);
+const PostPage = (props: any) => {
+  const slug = props.params.slug;
+  const post = getPostContent(slug);
   return (
     <div>
-      {/* <div className="my-12 text-center">
+      <div className="my-12 text-center">
         <h1 className="text-2xl text-[#E9C7A5]">{post.data.title}</h1>
         <p className="text-[#E9C7A5] mt-2">{post.data.date}</p>
       </div>
@@ -43,7 +32,7 @@ const PostPage = ({ params }: PageProps) => {
         <div className="">
           <Markdown>{post.content}</Markdown>
         </div>
-      </article> */}
+      </article>
     </div>
   );
 };
