@@ -1,23 +1,38 @@
 import Markdown from "markdown-to-jsx";
-import getPostMetadata from "@/lib/getposts";
-import { getPostContent } from "@/lib/getposts";
+import getPostMetadata, { getPostContent } from "@/lib/getposts";
+import { PageProps } from "@/types";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-interface PageProps {
-  params: {
-    slug: string;
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const page = await getPostContent(params.slug);
+
+  if (!page) {
+    return {};
+  }
+  return {
+    title: page.data.title,
+    description: page.data.subtitle,
   };
 }
 
-export const generateStaticParams = async () => {
-  const posts = getPostMetadata();
-  return posts.map((post) => ({
+export async function generateStaticParams(): Promise<PageProps["params"][]> {
+  return getPostMetadata().map((post) => ({
     slug: post.slug,
   }));
-};
+}
 
-const PostPage = ({ params }: PageProps) => {
-  const slug = params.slug;
-  const post = getPostContent(slug);
+const PostPage = async ({ params }: PageProps) => {
+  const slug = params?.slug;
+  const post = await getPostContent(slug);
+  const allPosts = await getPostMetadata().find((post) => post.slug === slug);
+
+  if (!allPosts || !post) {
+    notFound();
+  }
+
   return (
     <div>
       <div className="my-12 text-center">

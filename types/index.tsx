@@ -16,5 +16,12 @@ export const PostMetaSchema = z.object({
   slug: z.string(),
 });
 
+const PagePropsSchema = z.object({
+  params: z.object({
+    slug: z.string(),
+  }),
+});
+
 export type PostMetaType = z.infer<typeof PostMetaSchema>;
 export type SiteConfig = z.infer<typeof SiteConfigSchema>;
+export type PageProps = z.infer<typeof PagePropsSchema>;

@@ -1,6 +1,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 import { PostMetaType } from "@/types";
+import { notFound } from "next/navigation";
 
 const getPostMetadata = (): PostMetaType[] => {
   const folder = "posts/";
@@ -11,6 +12,7 @@ const getPostMetadata = (): PostMetaType[] => {
   const posts = markdownPosts.map((fileName) => {
     const fileContents = fs.readFileSync(`posts/${fileName}`, "utf8");
     const matterResult = matter(fileContents);
+
     return {
       title: matterResult.data.title,
       date: matterResult.data.date,
@@ -19,13 +21,16 @@ const getPostMetadata = (): PostMetaType[] => {
     };
   });
 
-  return posts;
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 };
 
-export const getPostContent = (slug: string) => {
+export const getPostContent = async (slug: string) => {
   const folder = "posts/";
   const file = `${folder}${slug}.md`;
-  const content = fs.readFileSync(file, "utf8");
+  const content = fs?.readFileSync(file, "utf8");
+  if (!content) {
+    return notFound();
+  }
   const matterResult = matter(content);
   return matterResult;
 };
