@@ -1,6 +1,6 @@
 ---
 title: "Testing Blog Post"
-subtitle: "Create an AWS account and set up CLI/SDK access."
+subtitle: "Create an AWS account and set up CLI/SDK access. plays a vital role in the creation of software products"
 date: "2023-05-01"
 ---
 

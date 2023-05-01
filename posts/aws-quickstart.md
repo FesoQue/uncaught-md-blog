@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with AWS"
-subtitle: "Create an AWS account and set up CLI/SDK access."
+subtitle: "Create an AWS account and set up CLI/SDK access. plays a vital role in the creation of software products"
 date: "2020-12-27"
 ---
 
@@ -28,11 +28,19 @@ If you are a proficient Python user, you can just install it with `pip`.
 pip install awscli
 ```
 
+```json
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
+
 Otherwise, check out the [official instructions](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
 
 Once installed, you should be able to run this command from the terminal to see its version.
 
-```bash
+```html
 aws --version
 ```
 
