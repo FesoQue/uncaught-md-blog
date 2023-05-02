@@ -1,0 +1,42 @@
+"use client";
+
+import React from "react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import Link from "next/link";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
+
+const CategoryMenu = () => {
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild>
+        <button className="flex items-center text-white">
+          Category{" "}
+          <span className="ml-2">
+            <ChevronDownIcon className="h-5 w-5 text-white" />
+          </span>
+        </button>
+      </DropdownMenu.Trigger>
+
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          className="min-w-[180px] rounded-md bg-white p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade"
+          sideOffset={5}
+        >
+          <DropdownMenu.Item className="group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none text-violet11 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[disabled]:text-mauve8 data-[highlighted]:text-violet1">
+            <Link href={"/"} className="flex h-full w-full items-center">
+              aa
+            </Link>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item className="group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none text-violet11 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[disabled]:text-mauve8 data-[highlighted]:text-violet1">
+            <Link href={"/"}>aa</Link>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item className="group relative flex h-[25px] select-none items-center rounded-[3px] px-[5px] pl-[25px] text-[13px] leading-none text-violet11 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[disabled]:text-mauve8 data-[highlighted]:text-violet1">
+            <Link href={"/"}>aa</Link>
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
+};
+
+export default CategoryMenu;

@@ -1,11 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import getPostMetadata from "@/lib/getposts";
-import { ArrowSmallRightIcon } from "@heroicons/react/24/solid";
-import { CSSProperties } from "react";
-import { charm, montserrat } from "@/utils";
+import { charm } from "@/utils";
 import PostCategories from "@/components/PostCategories";
 import PostCards from "@/components/PostCards";
+import CategoryMenu from "@/components/ui/Dropdown";
 
 const Home = () => {
   return (
@@ -18,7 +17,7 @@ const Home = () => {
           >
             DevWrites
           </Link>
-          <p className="text-xl text-white">Category</p>
+          <CategoryMenu />
         </nav>
       </header>
       <section className="mx-auto max-w-[1024px] p-4">
