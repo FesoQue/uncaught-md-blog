@@ -22,6 +22,17 @@ const PagePropsSchema = z.object({
   }),
 });
 
+const PostSchema = z.object({
+  key: z.number(),
+  postProps: z.object({
+    title: z.string(),
+    date: z.string(),
+    subtitle: z.string(),
+    slug: z.string(),
+  }),
+});
+
 export type PostMetaType = z.infer<typeof PostMetaSchema>;
 export type SiteConfig = z.infer<typeof SiteConfigSchema>;
+export type PostType = z.infer<typeof PostSchema>;
 export type PageProps = z.infer<typeof PagePropsSchema>;

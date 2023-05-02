@@ -1,6 +1,6 @@
 ---
 title: "Testing Blog Post"
-subtitle: "Create an AWS account and set up CLI/SDK access. plays a vital role in the creation of software products"
+subtitle: "Cloud computing plays a vital role in the creation of software products and services. It's also one of the most highly sought-after skills in the tech industry."
 date: "2023-05-01"
 ---
 
