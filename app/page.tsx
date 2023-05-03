@@ -13,7 +13,7 @@ const Home = () => {
         <nav className="mx-auto flex max-w-[1024px] items-center p-4">
           <Link
             href=""
-            className={`${charm.className} text-2xl font-bold text-[#C4D46C]`}
+            className={`${charm.className} mr-3 text-2xl font-bold text-[#C4D46C]`}
           >
             DevWrites
           </Link>

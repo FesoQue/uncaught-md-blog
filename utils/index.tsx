@@ -1,4 +1,4 @@
-import { Montserrat, Charm } from "next/font/google";
+import { Montserrat, Charm, Work_Sans } from "next/font/google";
 
 export const montserrat = Montserrat({
   subsets: ["latin"],
@@ -10,3 +10,5 @@ export const charm = Charm({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
+
+export const work_sans = Work_Sans({ subsets: ["latin"] });
