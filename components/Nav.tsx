@@ -25,7 +25,7 @@ const Nav = () => {
               type="circle"
               show={show}
               color="#C4D46C"
-              // padding={5}
+              padding={5}
             >
               Uncaught
             </RoughNotation>
