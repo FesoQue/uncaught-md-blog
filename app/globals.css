@@ -16,6 +16,9 @@ body {
 }
 .homepage-hero {
   clip-path: polygon(0 1%, 100% 0%, 100% 75%, 0% 100%);
+  /* background-image: url("/reflection.svg");
+  background-position: center;
+  background-size: cover; */
 }
 .post-card {
   transition: all 400ms ease-in-out;

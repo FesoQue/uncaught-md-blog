@@ -11,9 +11,9 @@ const Nav = () => {
         <div className="flex items-center">
           <Link
             href=""
-            className={`${charm.className} mr-3 text-2xl font-bold text-[#C4D46C]`}
+            className={`${charm.className} mr-3 md:mr-5 lg:mr-10 text-xl font-bold text-[#ffffff]`}
           >
-            DevWrites
+            Uncaught
           </Link>
           <CategoryMenu />
         </div>
