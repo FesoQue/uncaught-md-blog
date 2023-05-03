@@ -30,3 +30,6 @@ body {
 .post-card:hover button span {
   opacity: 1;
 }
+.social-icons a:hover svg path {
+  color: #e9c7a5;
+}

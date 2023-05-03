@@ -42,7 +42,7 @@ const PostPage = async ({ params }: PageProps) => {
         <p className="mt-2 text-[#E9C7A5]">{post.data.date}</p>
       </div>
 
-      <article className="prose max-w-none p-5 prose-h1:text-[#E9C7A5] prose-h2:text-[#E9C7A5] prose-h3:text-[#E9C7A5] prose-h4:text-[#E9C7A5] prose-p:text-[#FCFCFC] prose-a:text-[#FCFCFC] prose-strong:text-[#FCFCFC] prose-code:text-[#F2CA27] prose-li:text-[#fcfcfc] prose-th:text-[#fcfcfc] prose-td:text-[#fcfcfc]">
+      <article className="prose max-w-none p-5 prose-h1:text-[#E9C7A5] prose-h2:text-[#E9C7A5] prose-h3:text-[#E9C7A5] prose-h4:text-[#E9C7A5] prose-p:text-white prose-a:text-white prose-strong:text-white prose-code:text-[#F2CA27] prose-li:text-white prose-th:text-white prose-td:text-white">
         <article className="prose mx-auto max-w-3xl">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {post.content}
