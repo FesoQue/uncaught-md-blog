@@ -1,16 +1,16 @@
-"use client";
 import React from "react";
-import { PageProps } from "@/types";
-import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
+import getPostMetadata from "@/lib/getposts";
 
-const Category = () => {
-  const pathSegment = usePathname();
-  const pathName = pathSegment.split("/")[1];
+const Category = async () => {
+  // const reactPosts = await getPostMetadata().find(
+  //   (post) => post.tag === pathName
+  // );
+  // console.log(searchParams);
 
   return (
     <div>
-      <Header path={pathName} />
+      <Header />
     </div>
   );
 };

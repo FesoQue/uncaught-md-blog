@@ -10,7 +10,7 @@ const PostCategories = () => {
       <div>
         <div className="item-center flex flex-wrap gap-3">
           <Link
-            href={"#"}
+            href={"/react"}
             className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
           >
             React
@@ -26,18 +26,6 @@ const PostCategories = () => {
             className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
           >
             JavaScript
-          </Link>
-          <Link
-            href={"#"}
-            className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
-          >
-            TypeScript
-          </Link>
-          <Link
-            href={"#"}
-            className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
-          >
-            framer-motion
           </Link>
           <Link
             href={"#"}

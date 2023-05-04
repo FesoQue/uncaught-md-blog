@@ -24,7 +24,7 @@ const CategoryMenu = () => {
           sideOffset={5}
         >
           <DropdownMenu.Item className="text-normal group relative flex h-[32px] select-none items-center rounded-[3px] pl-[25px] leading-none text-white outline-none data-[disabled]:pointer-events-none data-[highlighted]:text-[#E9C7A5]">
-            <Link href={"/"} className="flex h-full w-full items-center">
+            <Link href={"/react"} className="flex h-full w-full items-center">
               Reactjs
             </Link>
           </DropdownMenu.Item>
@@ -40,7 +40,7 @@ const CategoryMenu = () => {
           </DropdownMenu.Item>
           <DropdownMenu.Item className="group relative flex h-[32px] select-none items-center rounded-[3px] px-[5px] pl-[25px] leading-none text-white outline-none data-[disabled]:pointer-events-none data-[highlighted]:text-[#E9C7A5]">
             <Link href={"/"} className="flex h-full w-full items-center">
-              TypeScript
+              CSS
             </Link>
           </DropdownMenu.Item>
         </DropdownMenu.Content>
