@@ -1,14 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { work_sans } from "@/utils";
 
 const CategoryMenu = () => {
+  useEffect(() => {}, []);
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger asChild>
         <button className="flex items-center text-white ml-2">
           Category{" "}
@@ -24,22 +25,34 @@ const CategoryMenu = () => {
           sideOffset={5}
         >
           <DropdownMenu.Item className="text-normal group relative flex h-[32px] select-none items-center rounded-[3px] pl-[25px] leading-none text-white outline-none data-[disabled]:pointer-events-none data-[highlighted]:text-[#E9C7A5]">
-            <Link href={"/react"} className="flex h-full w-full items-center">
+            <Link
+              href={"/tutorial/react"}
+              className="flex h-full w-full items-center"
+            >
               Reactjs
             </Link>
           </DropdownMenu.Item>
           <DropdownMenu.Item className="group relative flex h-[32px] select-none items-center rounded-[3px] px-[5px] pl-[25px] leading-none text-white outline-none data-[disabled]:pointer-events-none data-[highlighted]:text-[#E9C7A5]">
-            <Link href={"/"} className="flex h-full w-full items-center">
+            <Link
+              href={"/tutorial/next"}
+              className="flex h-full w-full items-center"
+            >
               Nextjs
             </Link>
           </DropdownMenu.Item>
           <DropdownMenu.Item className="group relative flex h-[32px] select-none items-center rounded-[3px] px-[5px] pl-[25px] leading-none text-white outline-none data-[disabled]:pointer-events-none data-[highlighted]:text-[#E9C7A5]">
-            <Link href={"/"} className="flex h-full w-full items-center">
+            <Link
+              href={"/tutorial/javascript"}
+              className="flex h-full w-full items-center"
+            >
               JavaScript
             </Link>
           </DropdownMenu.Item>
           <DropdownMenu.Item className="group relative flex h-[32px] select-none items-center rounded-[3px] px-[5px] pl-[25px] leading-none text-white outline-none data-[disabled]:pointer-events-none data-[highlighted]:text-[#E9C7A5]">
-            <Link href={"/"} className="flex h-full w-full items-center">
+            <Link
+              href={"/tutorial/css"}
+              className="flex h-full w-full items-center"
+            >
               CSS
             </Link>
           </DropdownMenu.Item>

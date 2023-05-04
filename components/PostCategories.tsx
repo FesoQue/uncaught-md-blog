@@ -10,25 +10,25 @@ const PostCategories = () => {
       <div>
         <div className="item-center flex flex-wrap gap-3">
           <Link
-            href={"/react"}
+            href={"/tutorial/react"}
             className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
           >
             React
           </Link>
           <Link
-            href={"#"}
+            href={"/tutorial/next"}
             className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
           >
             Nextjs
           </Link>
           <Link
-            href={"#"}
+            href={"/tutorial/javascript"}
             className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
           >
             JavaScript
           </Link>
           <Link
-            href={"#"}
+            href={"/tutorial/css"}
             className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
           >
             CSS

@@ -1,7 +1,6 @@
 "use client";
 import { montserrat } from "@/utils";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 const Header = () => {
   const pathSegment = usePathname();
