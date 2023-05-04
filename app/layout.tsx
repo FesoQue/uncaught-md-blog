@@ -1,3 +1,4 @@
+import Nav from "@/components/Nav";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Work_Sans } from "next/font/google";
@@ -31,7 +32,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={work_sans.className}>{children}</body>
+      <body className={work_sans.className}>
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 }
