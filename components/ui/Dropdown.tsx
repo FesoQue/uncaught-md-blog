@@ -1,15 +1,21 @@
 "use client";
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { work_sans } from "@/utils";
+import { usePathname } from "next/navigation";
 
 const CategoryMenu = () => {
-  useEffect(() => {}, []);
+  const [open, setOpen] = useState(false);
+  const path = usePathname();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [path]);
+
   return (
-    <DropdownMenu.Root modal={false}>
+    <DropdownMenu.Root open={open} onOpenChange={setOpen}>
       <DropdownMenu.Trigger asChild>
         <button className="flex items-center text-white ml-2">
           Category{" "}

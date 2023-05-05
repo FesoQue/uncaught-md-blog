@@ -24,7 +24,7 @@ const ReactTutorial = async () => {
           </p>
         </div>
       </header>
-      <div className="max-w-[1024px] mx-auto grid grid-cols-2 gap-5 p-4">
+      <div className="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 p-4">
         {reactPosts.map((post) => {
           return (
             <div
