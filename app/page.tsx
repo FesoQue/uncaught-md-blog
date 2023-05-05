@@ -7,7 +7,7 @@ import { montserrat } from "@/utils";
 const Home = () => {
   return (
     <main>
-      <header className="homepage-hero mb-10 grid min-h-[200px] place-content-center bg-[#353a35] md:mb-8 md:min-h-[300px]">
+      <header className="homepage-hero mb-10 grid min-h-[200px] place-content-center bg-[#353a35] md:mb-8 md:min-h-[250px]">
         <div className="text-center">
           <h1
             className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}

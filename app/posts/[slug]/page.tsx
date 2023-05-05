@@ -42,7 +42,7 @@ const PostPage = async ({ params }: PageProps) => {
   return (
     <div>
       <div className="mb-12 text-center">
-        <div className="homepage-hero mb-10 grid min-h-[200px] place-content-center bg-[#353a35] md:mb-8 md:min-h-[300px]">
+        <div className="homepage-hero mb-10 grid min-h-[200px] place-content-center bg-[#353a35] md:mb-8 md:min-h-[250px]">
           <div>
             <h1
               className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}

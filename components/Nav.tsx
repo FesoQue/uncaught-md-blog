@@ -18,7 +18,7 @@ const Nav = () => {
       <div className="mx-auto flex max-w-[1024px] items-center justify-between">
         <div className="flex items-center">
           <Link
-            href=""
+            href="/"
             className={`${charm.className} mr-3 md:mr-5 lg:mr-10 text-xl font-bold text-[#ffffff]`}
           >
             <RoughNotation
