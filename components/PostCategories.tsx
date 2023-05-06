@@ -15,7 +15,7 @@ const PostCategories = () => {
               <Link
                 key={i}
                 href={`/tutorials/${post.tag}`}
-                className="rounded-2xl bg-[#E9C7A5] px-3 py-2 text-sm font-medium tracking-wide leading-none text-[#353A35]"
+                className="rounded-2xl bg-[#E9C7A5] px-3 py-2 text-sm font-medium tracking-wide leading-none text-[#353A35] transition-all hover:bg-opacity-80"
               >
                 {post.tag}
               </Link>

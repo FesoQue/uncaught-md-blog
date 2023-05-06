@@ -3,23 +3,12 @@ import getPostMetadata from "@/lib/getposts";
 import PostCategories from "@/components/PostCategories";
 import PostCards from "@/components/PostCards";
 import { montserrat } from "@/utils";
+import HomepageHeader from "@/components/HomepageHeader";
 
 const Home = () => {
   return (
     <main>
-      <header className="homepage-hero mb-10 grid min-h-[200px] place-content-center bg-[#353a35] md:mb-8 md:min-h-[250px]">
-        <div className="text-center">
-          <h1
-            className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}
-          >
-            Uncaught Words
-          </h1>
-          <p className="tracking-wider text-white text-sm md:text-base max-w-[500px] mx-auto px-5">
-            My series of reflections on the top technologies in frontend web
-            development.
-          </p>
-        </div>
-      </header>
+      <HomepageHeader />
       <section className="mx-auto max-w-[1024px] p-4">
         <div className="w-full md:flex md:items-start md:gap-14 lg:gap-16">
           <div className="md:w-[70%]">

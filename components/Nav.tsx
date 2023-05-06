@@ -13,7 +13,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="bg-[#353a35] p-4">
+    <nav className="p-4">
       <div className="mx-auto flex max-w-[1024px] items-center justify-between">
         <div className="flex items-center">
           <Link
@@ -32,7 +32,7 @@ const Nav = () => {
           <CategoryMenu />
         </div>
         <div className="social-icons flex items-center">
-          <a href="#" className="mr-4">
+          <a href="https://github.com/FesoQue" className="mr-4">
             <AiFillGithub color="#fcfcfc" size={"28"} />
           </a>
           <a href="#" className="">

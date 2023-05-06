@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={work_sans.className}>
-        <Nav />
+        {/* <Nav /> */}
         {children}
       </body>
     </html>

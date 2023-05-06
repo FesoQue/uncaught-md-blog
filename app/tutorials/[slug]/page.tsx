@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/solid";
 import { PageProps } from "@/types";
 import { Metadata } from "next";
+import CategorypageHeader from "@/components/CategorypageHeader";
 
 export async function generateMetadata({
   params,
@@ -21,8 +22,8 @@ const Tutorials = async ({ params }: PageProps) => {
   );
 
   return (
-    <div>
-      <header className="homepage-hero mb-10 grid min-h-[200px] place-content-center bg-[#353a35] md:mb-8 md:min-h-[250px]">
+    <main>
+      {/* <header className="homepage-hero mb-10 grid min-h-[200px] place-content-center bg-[#353a35] md:mb-8 md:min-h-[270px]">
         <div className="text-center">
           <h1
             className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}
@@ -33,7 +34,8 @@ const Tutorials = async ({ params }: PageProps) => {
             {articles?.length} Articles
           </p>
         </div>
-      </header>
+      </header> */}
+      <CategorypageHeader category={params?.slug} amount={articles?.length} />
       <div className="max-w-[1024px] mx-auto grid grid-cols-2 gap-5 p-4">
         {articles.map((article, i) => {
           return (
@@ -77,7 +79,7 @@ const Tutorials = async ({ params }: PageProps) => {
           );
         })}
       </div>
-    </div>
+    </main>
   );
 };
 
