@@ -25,16 +25,15 @@ const HomepageHeader = () => {
         }}
       />
       <Nav />
-      <header className="grid min-h-[200px] place-content-center md:mb-8 md:min-h-[270px]">
+      <header className="grid min-h-[230px] place-content-center md:mb-8 md:min-h-[270px]">
         <div className="text-center">
           <h1
             className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}
           >
-            Uncaught Words
+            Uncaught Type
           </h1>
-          <p className="tracking-wider text-white text-sm md:text-base max-w-[500px] mx-auto px-5">
-            My series of reflections on the top technologies in frontend web
-            development.
+          <p className="tracking-wider text-white md:text-base max-w-[500px] mx-auto px-5">
+            My reflections on the top technologies in frontend web development.
           </p>
         </div>
       </header>
