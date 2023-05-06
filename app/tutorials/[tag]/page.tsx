@@ -55,7 +55,7 @@ const Tutorials = async ({ params }: CategoryProps) => {
               className="post-card-wrapper rounded-md border border-transparent [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
             >
               <Link
-                href={`/posts/${article.tag}`}
+                href={`/posts/${article.slug}`}
                 className="post-card block p-4"
               >
                 <h2
