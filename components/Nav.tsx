@@ -1,5 +1,4 @@
 "use client";
-import { charm } from "@/utils";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import CategoryMenu from "./ui/Dropdown";
@@ -19,7 +18,7 @@ const Nav = () => {
         <div className="flex items-center">
           <Link
             href="/"
-            className={`${charm.className} mr-3 md:mr-5 lg:mr-10 text-xl font-bold text-[#ffffff]`}
+            className="mr-3 md:mr-5 lg:mr-10 text-xl font-bold text-[#ffffff]"
           >
             <RoughNotation
               type="circle"
