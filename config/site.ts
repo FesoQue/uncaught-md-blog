@@ -1,9 +1,10 @@
 import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
-  name: "Devwrites Blog",
-  description: "A technical blog website",
-  url: "https://devwrites.vercel.app",
+  name: "Uncaught Blog",
+  description:
+    "Looking to learn about the most popular technologies in front-end web development? Our blog post covers everything you need to know about JavaScript, React, TypeScript, Next.js, and CSS. Gain insights on how these technologies work together to build modern web applications. Start your journey into front-end web development today.",
+  url: "https://uncaught.vercel.app",
   links: {
     github: "https://github.com/fesoque",
   },
