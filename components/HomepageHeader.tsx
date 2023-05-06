@@ -33,7 +33,8 @@ const HomepageHeader = () => {
             Uncaught Type
           </h1>
           <p className="tracking-wider text-white md:text-base max-w-[500px] mx-auto px-5">
-            My reflections on the top technologies in frontend web development.
+            My series of reflections on the top technologies in frontend web
+            development.
           </p>
         </div>
       </header>
