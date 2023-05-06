@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import getPostMetadata from "@/lib/getposts";
 
 const PostCategories = () => {
   return (
@@ -9,30 +10,17 @@ const PostCategories = () => {
       </p>
       <div>
         <div className="item-center flex flex-wrap gap-3">
-          <Link
-            href={"/tutorial/react"}
-            className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
-          >
-            React
-          </Link>
-          <Link
-            href={"/tutorial/next"}
-            className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
-          >
-            Nextjs
-          </Link>
-          <Link
-            href={"/tutorial/javascript"}
-            className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
-          >
-            JavaScript
-          </Link>
-          <Link
-            href={"/tutorial/css"}
-            className="rounded-2xl bg-[#E9C7A5] px-3 py-1 text-sm font-medium tracking-wide text-[#353A35]"
-          >
-            CSS
-          </Link>
+          {getPostMetadata().map((post, i) => {
+            return (
+              <Link
+                key={i}
+                href={`/tutorials/${post.tag}`}
+                className="rounded-2xl bg-[#E9C7A5] px-3 py-2 text-sm font-medium tracking-wide leading-none text-[#353A35]"
+              >
+                {post.tag}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

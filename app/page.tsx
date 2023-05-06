@@ -14,8 +14,9 @@ const Home = () => {
           >
             Uncaught Words
           </h1>
-          <p className="uppercase tracking-wider text-white text-sm md:text-base">
-            by adefeso qudus
+          <p className="tracking-wider text-white text-sm md:text-base max-w-[500px] mx-auto px-5">
+            My series of reflections on the top technologies in frontend web
+            development.
           </p>
         </div>
       </header>

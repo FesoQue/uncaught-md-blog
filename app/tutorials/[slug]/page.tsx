@@ -3,10 +3,21 @@ import getPostMetadata from "@/lib/getposts";
 import { montserrat } from "@/utils";
 import Link from "next/link";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/solid";
+import { PageProps } from "@/types";
+import { Metadata } from "next";
 
-const CssTutorial = async () => {
-  const reactPosts = await getPostMetadata().filter(
-    (post) => post.tag === "css"
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  return {
+    title: `${params.slug} articles`,
+    description: `This blog post covers everything you need to know about ${params.slug}`,
+  };
+}
+
+const Tutorials = async ({ params }: PageProps) => {
+  const articles = await getPostMetadata().filter(
+    (article) => article.tag === params.slug
   );
 
   return (
@@ -16,17 +27,18 @@ const CssTutorial = async () => {
           <h1
             className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}
           >
-            Css
+            {params.slug}
           </h1>
           <p className="uppercase tracking-wider text-white text-sm md:text-base">
-            {reactPosts?.length} Articles
+            {articles?.length} Articles
           </p>
         </div>
       </header>
       <div className="max-w-[1024px] mx-auto grid grid-cols-2 gap-5 p-4">
-        {reactPosts.map((post) => {
+        {articles.map((article, i) => {
           return (
             <div
+              key={i}
               style={
                 {
                   "--dark-purple": "53 58 53",
@@ -45,15 +57,15 @@ const CssTutorial = async () => {
               className="post-card-wrapper rounded-md border border-transparent [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
             >
               <Link
-                href={`/posts/${post.slug}`}
+                href={`/posts/${article.slug}`}
                 className="post-card block p-4"
               >
                 <h2
                   className={`${montserrat.variable} mb-2 font-montserrat text-[22px] font-semibold text-[#E9C7A5]`}
                 >
-                  {post.title}
+                  {article.title}
                 </h2>
-                <p className="mb-4 text-white">{post.subtitle}</p>
+                <p className="mb-4 text-white">{article.subtitle}</p>
                 <button className="flex items-center text-[#C4D46C]">
                   read more{" "}
                   <span>
@@ -69,4 +81,4 @@ const CssTutorial = async () => {
   );
 };
 
-export default CssTutorial;
+export default Tutorials;

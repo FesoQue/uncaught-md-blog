@@ -31,9 +31,9 @@ const PostCards = ({ postProps }: PostType) => {
           {postProps.title}
         </h2>
         <p className="mb-4 text-white">{postProps.subtitle}</p>
-        <button className="flex items-center text-[#C4D46C]">
-          read more{" "}
-          <span>
+        <button className="flex items-center text-[#C4D46C] leading-none">
+          Read more{" "}
+          <span className="leading-none">
             <ArrowSmallRightIcon className="ml-3 h-5 w-5 text-[#C4D46C]" />
           </span>
         </button>
