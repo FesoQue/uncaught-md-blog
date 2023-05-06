@@ -32,7 +32,7 @@ const Tutorials = async ({ params }: CategoryProps) => {
   return (
     <main>
       <CategorypageHeader category={params?.tag} amount={articles?.length} />
-      <div className="max-w-[1024px] mx-auto grid grid-cols-2 gap-5 p-4">
+      <div className="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 p-4">
         {articles.map((article, i) => {
           return (
             <div
