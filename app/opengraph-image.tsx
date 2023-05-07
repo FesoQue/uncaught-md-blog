@@ -1,8 +1,5 @@
 import { ImageResponse } from "next/server";
-import { PageProps } from "@/types";
-import { capitalize } from "@/utils/utils";
 
-export const alt = "About Acme";
 export const size = {
   width: 1200,
   height: 630,
@@ -10,20 +7,18 @@ export const size = {
 export const contentType = "image/png";
 export const runtime = "edge";
 
-export default async function og({ params }: PageProps) {
+export default async function og() {
   const worksansSemiBold = fetch(
-    new URL("../../assets/WorkSans-SemiBold.ttf", import.meta.url)
+    new URL("./assets/WorkSans-SemiBold.ttf", import.meta.url)
   ).then((res) => res.arrayBuffer());
   const montserratSemiBold = fetch(
-    new URL("../../assets/Montserrat-SemiBold.ttf", import.meta.url)
+    new URL("./assets/Montserrat-SemiBold.ttf", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const [worksansSemiBoldData, montserratSemiBoldData] = await Promise.all([
     worksansSemiBold,
     montserratSemiBold,
   ]);
-
-  const blogTitle = params?.slug?.split("-").join(" ");
 
   return new ImageResponse(
     (
@@ -57,7 +52,7 @@ export default async function og({ params }: PageProps) {
         </div>
         <div
           style={{
-            fontSize: 85,
+            fontSize: 90,
             width: "100%",
             height: "90%",
             display: "flex",
@@ -68,7 +63,7 @@ export default async function og({ params }: PageProps) {
             textAlign: "center",
           }}
         >
-          {capitalize(blogTitle)}
+          Uncaught Blog
         </div>
       </div>
     ),
