@@ -5,8 +5,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import Markdown from "markdown-to-jsx";
 import remarkGfm from "remark-gfm";
-import { montserrat } from "@/utils";
-import getFormattedDate from "@/utils/getformatteddate";
+import { getFormattedDate } from "@/utils/utils";
 import PostpageHeader from "@/components/PostPageHeader";
 
 export async function generateMetadata({

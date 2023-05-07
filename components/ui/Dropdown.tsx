@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import { work_sans } from "@/utils";
+import { work_sans } from "@/utils/utils";
 import { usePathname } from "next/navigation";
 
 const CategoryMenu = () => {

@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import { PostType } from "@/types";
-import { montserrat } from "@/utils";
+import { montserrat } from "@/utils/utils";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 "use client";
 import Nav from "./Nav";
-import { montserrat } from "@/utils";
+import { montserrat } from "@/utils/utils";
 import useSpotlight from "@/hooks/useSpotlight";
 import { motion, useMotionTemplate } from "framer-motion";
 

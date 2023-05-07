@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import getPostMetadata from "@/lib/getposts";
-import { montserrat } from "@/utils";
+import { montserrat } from "@/utils/utils";
 import Link from "next/link";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/solid";
 import { CategoryProps } from "@/types";

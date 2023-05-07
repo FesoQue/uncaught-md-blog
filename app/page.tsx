@@ -2,7 +2,6 @@ import React from "react";
 import getPostMetadata from "@/lib/getposts";
 import PostCategories from "@/components/PostCategories";
 import PostCards from "@/components/PostCards";
-import { montserrat } from "@/utils";
 import HomepageHeader from "@/components/HomepageHeader";
 
 const Home = () => {

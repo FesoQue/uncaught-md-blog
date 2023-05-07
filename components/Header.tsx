@@ -1,5 +1,5 @@
 "use client";
-import { montserrat } from "@/utils";
+import { montserrat } from "@/utils/utils";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
