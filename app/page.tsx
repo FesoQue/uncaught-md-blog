@@ -14,7 +14,7 @@ const Home = () => {
             <p className="mb-10 font-semibold uppercase tracking-wider text-[#C4D46C]">
               Recently Published
             </p>
-            <div className="space-y-4 rounded-md shadow-sm ">
+            <div className="space-y-6 rounded-md shadow-sm ">
               {getPostMetadata().map((post, i) => {
                 return <PostCards key={i} postProps={post} />;
               })}
