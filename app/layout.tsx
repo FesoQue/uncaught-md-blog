@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 import { work_sans } from "@/utils/utils";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: `${siteConfig.name}`,
@@ -29,7 +30,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={work_sans.className}>{children}</body>
+      <body className={work_sans.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
