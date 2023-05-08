@@ -7,6 +7,7 @@ import Markdown from "markdown-to-jsx";
 import remarkGfm from "remark-gfm";
 import { getFormattedDate } from "@/utils/utils";
 import PostpageHeader from "@/components/PostPageHeader";
+import SharePopover from "@/components/ui/Popover";
 
 export async function generateMetadata({
   params,
@@ -40,15 +41,19 @@ const PostPage = async ({ params }: PageProps) => {
   const publishDate = getFormattedDate(post.data.date);
 
   return (
-    <main>
+    <main className="relative">
       <PostpageHeader title={post.data.title} date={publishDate} />
-      <article className="prose max-w-none p-5 prose-h1:text-[#E9C7A5] prose-h2:text-[#E9C7A5] prose-h3:text-[#E9C7A5] prose-h4:text-[#E9C7A5] prose-p:text-white prose-a:text-white prose-strong:text-white prose-code:text-[#F2CA27] prose-li:text-white prose-th:text-white prose-td:text-white">
+      <div className="prose max-w-none p-5 prose-h1:text-[#E9C7A5] prose-h2:text-[#E9C7A5] prose-h3:text-[#E9C7A5] prose-h4:text-[#E9C7A5] prose-p:text-white prose-a:text-white prose-strong:text-white prose-code:text-[#F2CA27] prose-li:text-white prose-th:text-white prose-td:text-white">
         <article className="prose mx-auto max-w-3xl">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {post.content}
           </ReactMarkdown>
         </article>
-      </article>
+      </div>
+      {/* <button className="bg-white  w-[200px] h-[50px] block text-xl fixed top-[90vh] right-1/2 -translate-x-1/2 left-1/2">
+        share button
+      </button> */}
+      <SharePopover />
     </main>
   );
 };

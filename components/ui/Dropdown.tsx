@@ -19,7 +19,7 @@ const CategoryMenu = () => {
         <button className="flex items-center text-white ml-2">
           Category{" "}
           <span className="ml-1">
-            <ChevronDownIcon className="h-5 w-5 text-white" />
+            <ChevronDownIcon className="h-4 w-4 text-white" />
           </span>
         </button>
       </DropdownMenu.Trigger>
@@ -45,6 +45,7 @@ const CategoryMenu = () => {
               JavaScript
             </Link>
           </DropdownMenu.Item>
+          <DropdownMenu.Arrow className="fill-[#668892]" />
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
