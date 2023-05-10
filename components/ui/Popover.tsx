@@ -22,7 +22,9 @@ const Button = () => {
     }
   };
 
-  const textToCopy = { text: `https://www.uncaught.vercel.app${pathname}` };
+  const textToCopy = {
+    text: `https://www.uncaught-type.vercel.app${pathname}`,
+  };
 
   return (
     <>
@@ -69,7 +71,7 @@ const SharePopover = () => (
             >
               <div className="overflow-hidden w-[80%]">
                 <p className="text-sm text-gray-500 px-2">
-                  {`https://www.uncaught.vercel.app${usePathname().slice(
+                  {`https://www.uncaught-type.vercel.app${usePathname().slice(
                     0,
                     10
                   )}`}
