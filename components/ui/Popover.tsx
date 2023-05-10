@@ -27,8 +27,9 @@ const Button = () => {
   return (
     <>
       <button
-        className="text-sm w-[25%] h-full border-l border-l-1 border-l-gray-500 text-center font-semibold hover:bg-gray-50 transition-all"
+        className="text-sm w-[25%] h-full text-center font-semibold hover:bg-gray-50 transition-all"
         onClick={() => clickToCopy(textToCopy)}
+        style={{ borderLeft: "1px solid #aaa" }}
       >
         {word}
       </button>
@@ -62,7 +63,10 @@ const SharePopover = () => (
             </span>
           </div>
           <div>
-            <div className="flex w-full h-[38px] items-center border border-1 border-gray-600 rounded">
+            <div
+              className="flex w-full h-[38px] items-center rounded"
+              style={{ border: "1px solid #aaa" }}
+            >
               <div className="overflow-hidden w-[80%]">
                 <p className="text-sm text-gray-500 px-2">
                   {`https://www.uncaught.vercel.app${usePathname().slice(
