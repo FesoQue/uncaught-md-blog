@@ -50,9 +50,6 @@ const PostPage = async ({ params }: PageProps) => {
           </ReactMarkdown>
         </article>
       </div>
-      {/* <button className="bg-white  w-[200px] h-[50px] block text-xl fixed top-[90vh] right-1/2 -translate-x-1/2 left-1/2">
-        share button
-      </button> */}
       <SharePopover />
     </main>
   );
