@@ -50,7 +50,7 @@ const PostPage = async ({ params }: PageProps) => {
           </ReactMarkdown>
         </article>
       </div>
-      <SharePopover />
+      {/* <SharePopover /> */}
     </main>
   );
 };

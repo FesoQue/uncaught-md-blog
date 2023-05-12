@@ -31,7 +31,7 @@ const CategorypageHeader = ({
         }}
       />
       <Nav />
-      <header className="grid min-h-[230px] place-content-center md:mb-8 md:min-h-[270px]">
+      <header className="grid min-h-[240px] place-content-center md:mb-8 md:min-h-[270px]">
         <div className="text-center">
           <h1
             className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}

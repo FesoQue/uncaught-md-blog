@@ -3,6 +3,8 @@ import Nav from "./Nav";
 import { montserrat } from "@/utils/utils";
 import useSpotlight from "@/hooks/useSpotlight";
 import { motion, useMotionTemplate } from "framer-motion";
+import { ShareIcon } from "@heroicons/react/24/solid";
+import SharePopover from "./ui/Popover";
 
 const PostpageHeader = ({ title, date }: { title: string; date: string }) => {
   const { mouseX, mouseY, handleMouseMove } = useSpotlight();
@@ -25,18 +27,23 @@ const PostpageHeader = ({ title, date }: { title: string; date: string }) => {
         }}
       />
       <Nav />
-      <header className="grid min-h-[230px] place-content-center md:mb-8 md:min-h-[270px]">
+      <div className="grid min-h-[240px] place-content-center md:mb-8 md:min-h-[270px]">
         <div className="text-center">
           <h1
             className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}
           >
             {title}
           </h1>
-          <p className="uppercase tracking-wider text-white text-sm md:text-base">
+          <p className="uppercase tracking-wider text-white text-sm md:text-base mb-3">
             {date}
           </p>
+          {/* <button className="min-w-[75px] bg-white h-[28px] rounded-full font-semibold flex items-center mx-auto justify-center">
+            <span className="mr-1 text-sm">share</span>
+            <ShareIcon className="w-3 h-3 text-black" />
+          </button> */}
+          <SharePopover />
         </div>
-      </header>
+      </div>
     </header>
   );
 };

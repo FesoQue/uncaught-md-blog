@@ -31,7 +31,7 @@ const Button = () => {
       <button
         className="text-sm w-[25%] h-full text-center font-semibold hover:bg-gray-50 transition-all"
         onClick={() => clickToCopy(textToCopy)}
-        style={{ borderLeft: "1px solid #aaa" }}
+        style={{ borderLeft: "1px solid rgba(0, 0, 0, .4)" }}
       >
         {word}
       </button>
@@ -43,13 +43,13 @@ const SharePopover = () => (
   <Popover.Root>
     <Popover.Trigger asChild>
       <button
-        className={`${work_sans.className} bg-white min-w-[100px] px-1 justify-center text h-[40px] rounded flex items-center font-semibold fixed top-[90vh] right-1/2 -translate-x-1/2 left-1/2`}
+        className={`${work_sans.className} bg-white min-w-[80px] px-1 justify-center text h-[30px] rounded-full flex items-center font-semibold mx-auto text-sm transition-all hover:bg-opacity-90`}
         aria-label="Update dimensions"
       >
-        <span className="mr-2">
-          <ShareIcon className="w-4 h-4 text-black" />
+        <span className="mr-1">
+          <ShareIcon className="w-3 h-3 text-black" />
         </span>
-        share{" "}
+        share
       </button>
     </Popover.Trigger>
     <Popover.Portal>
@@ -60,21 +60,18 @@ const SharePopover = () => (
         <div>
           <div className="mb-3">
             <p className="font-medium leading-[.85]">Share to web</p>
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-gray-700">
               Anyone with the link can read it
             </span>
           </div>
           <div>
             <div
               className="flex w-full h-[38px] items-center rounded"
-              style={{ border: "1px solid #aaa" }}
+              style={{ border: "1px solid rgba(0, 0, 0, .4)" }}
             >
-              <div className="overflow-hidden w-[80%]">
-                <p className="text-sm text-gray-500 px-2">
-                  {`https://www.uncaught-type.vercel.app${usePathname().slice(
-                    0,
-                    10
-                  )}`}
+              <div className="w-[80%] md:w-[85%] overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
+                <p className="text-sm text-gray-700 px-2 min-w-[500px]">
+                  {`https://www.uncaught-type.vercel.app${usePathname()}`}
                 </p>
               </div>
               <Button />
