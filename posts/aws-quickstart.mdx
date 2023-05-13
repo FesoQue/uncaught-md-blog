@@ -37,8 +37,12 @@ Otherwise, check out the [official instructions](https://docs.aws.amazon.com/cli
 
 Once installed, you should be able to run this command from the terminal to see its version.
 
-```html
-aws --version
+```typescript
+export function getFormattedDate(dateString: string): string {
+  return new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(
+    new Date(dateString)
+  );
+}
 ```
 
 ### Create an IAM user

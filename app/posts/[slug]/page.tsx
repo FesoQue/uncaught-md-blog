@@ -6,6 +6,12 @@ import remarkGfm from "remark-gfm";
 import { getFormattedDate } from "@/utils/utils";
 import PostpageHeader from "@/components/PostPageHeader";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypeHighlight from "rehype-highlight";
+// import language
+import langJavascript from "highlight.js/lib/languages/javascript";
+import langTypescript from "highlight.js/lib/languages/typescript";
+// import style for syntax highlighting
+import "../../../styles/highlight-js/onedark.css";
 
 export async function generateMetadata({
   params,
@@ -37,13 +43,30 @@ const PostPage = async ({ params }: PageProps) => {
   }
   const publishDate = getFormattedDate(post.data.date);
 
+  const options = {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [
+        [
+          rehypeHighlight,
+          {
+            languages: {
+              javascript: langJavascript,
+              typescript: langTypescript,
+            },
+          },
+        ],
+      ],
+    },
+  };
+
   return (
     <main className="relative">
       <PostpageHeader title={post.data.title} date={publishDate} />
-      <div className="prose max-w-none p-5 prose-h1:text-[#E9C7A5] prose-h2:text-[#E9C7A5] prose-h3:text-[#E9C7A5] prose-h4:text-[#E9C7A5] prose-p:text-white prose-a:text-white prose-strong:text-white  prose-li:text-white prose-th:text-white prose-td:text-white">
+      <div className="prose max-w-none p-5 prose-h1:text-[rgb(233,199,165)] prose-h2:text-[#E9C7A5] prose-h3:text-[#E9C7A5] prose-h4:text-[#E9C7A5] prose-p:text-white prose-a:text-white prose-strong:text-white  prose-li:text-white prose-th:text-white prose-td:text-white prose-code:text-white">
         <article className="prose mx-auto max-w-3xl">
           {/* @ts-expect-error Server Component*/}
-          <MDXRemote source={post.content} />
+          <MDXRemote source={post.content} options={options} />
         </article>
       </div>
     </main>
