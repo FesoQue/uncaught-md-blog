@@ -46,8 +46,8 @@ const SharePopover = () => (
         className={`${work_sans.className} bg-white min-w-[80px] px-1 justify-center text h-[30px] rounded-full flex items-center font-semibold mx-auto text-sm transition-all hover:bg-opacity-90`}
         aria-label="Update dimensions"
       >
-        <span className="mr-1">
-          <ShareIcon className="w-3 h-3 text-black" />
+        <span className="mr-2">
+          <ShareIcon className="w-4 h-4 text-black" />
         </span>
         share
       </button>

@@ -25,11 +25,7 @@ The AWS CLI is a command-line application that lets you interact with your AWS a
 
 If you are a proficient Python user, you can just install it with `pip`.
 
-```bash
-pip install awscli
-```
-
-```json
+```js
 {
   "firstName": "John",
   "lastName": "Smith",
