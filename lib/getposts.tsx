@@ -5,7 +5,7 @@ import { PostMetaType } from "@/types";
 const getPostMetadata = (): PostMetaType[] => {
   const folder = "posts/";
   const files = fs.readdirSync(folder);
-  const markdownPosts = files.filter((file) => file.endsWith(".md"));
+  const markdownPosts = files.filter((file) => file.endsWith(".mdx"));
 
   // Get gray-matter data from each file.
   const posts = markdownPosts.map((fileName) => {
@@ -17,7 +17,7 @@ const getPostMetadata = (): PostMetaType[] => {
       date: matterResult.data.date,
       subtitle: matterResult.data.subtitle,
       tag: matterResult.data.tag,
-      slug: fileName.replace(".md", ""),
+      slug: fileName.replace(".mdx", ""),
     };
   });
 
@@ -26,7 +26,7 @@ const getPostMetadata = (): PostMetaType[] => {
 
 export const getPostContent = async (slug: string) => {
   const folder = "posts/";
-  const file = `${folder}${slug}.md`;
+  const file = `${folder}${slug}.mdx`;
   const content = fs.readFileSync(file, "utf8");
   const matterResult = matter(content);
   return matterResult;
