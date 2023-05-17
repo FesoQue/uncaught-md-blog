@@ -5,7 +5,7 @@ import CategoryMenu from "./ui/Dropdown";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { RoughNotation } from "react-rough-notation";
 
-const Nav = () => {
+const Nav = ({ tags }: { tags: string[] }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Nav = () => {
               Uncaught
             </RoughNotation>
           </Link>
-          <CategoryMenu />
+          <CategoryMenu tags={tags} />
         </div>
         <div className="social-icons flex items-center">
           <a href="https://github.com/FesoQue" className="mr-4">

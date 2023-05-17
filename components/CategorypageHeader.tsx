@@ -7,9 +7,11 @@ import { motion, useMotionTemplate } from "framer-motion";
 const CategorypageHeader = ({
   category,
   amount,
+  tags,
 }: {
   category: string;
   amount: number;
+  tags: string[];
 }) => {
   const { mouseX, mouseY, handleMouseMove } = useSpotlight();
 
@@ -30,7 +32,7 @@ const CategorypageHeader = ({
           `,
         }}
       />
-      <Nav />
+      <Nav tags={tags} />
       <header className="grid min-h-[240px] place-content-center md:mb-8 md:min-h-[270px]">
         <div className="text-center">
           <h1

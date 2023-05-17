@@ -37,6 +37,7 @@ const PostPage = async ({ params }: PageProps) => {
   const slug = params?.slug;
   const post = await getPostContent(slug);
   const allPosts = await getPostMetadata().find((post) => post.slug === slug);
+  const postTags = await getPostMetadata().map((post) => post.tag);
 
   if (!allPosts || !post) {
     notFound();
@@ -62,7 +63,11 @@ const PostPage = async ({ params }: PageProps) => {
 
   return (
     <main className="relative">
-      <PostpageHeader title={post.data.title} date={publishDate} />
+      <PostpageHeader
+        title={post.data.title}
+        date={publishDate}
+        tags={postTags}
+      />
       <div className="prose max-w-none p-5 prose-h1:text-[rgb(233,199,165)] prose-h2:text-[#E9C7A5] prose-h3:text-[#E9C7A5] prose-h4:text-[#E9C7A5] prose-p:text-white prose-a:text-white prose-strong:text-white  prose-li:text-white prose-th:text-white prose-td:text-white prose-code:text-white">
         <article className="prose mx-auto max-w-3xl">
           {/* @ts-expect-error Server Component*/}

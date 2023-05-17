@@ -6,7 +6,15 @@ import { motion, useMotionTemplate } from "framer-motion";
 import { ShareIcon } from "@heroicons/react/24/solid";
 import SharePopover from "./ui/Popover";
 
-const PostpageHeader = ({ title, date }: { title: string; date: string }) => {
+const PostpageHeader = ({
+  title,
+  date,
+  tags,
+}: {
+  title: string;
+  date: string;
+  tags: string[];
+}) => {
   const { mouseX, mouseY, handleMouseMove } = useSpotlight();
 
   return (
@@ -26,7 +34,7 @@ const PostpageHeader = ({ title, date }: { title: string; date: string }) => {
           `,
         }}
       />
-      <Nav />
+      <Nav tags={tags} />
       <div className="grid min-h-[240px] place-content-center md:mb-8 md:min-h-[270px]">
         <div className="text-center">
           <h1

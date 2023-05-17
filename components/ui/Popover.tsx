@@ -61,7 +61,7 @@ const SharePopover = () => (
           <div className="mb-3">
             <p className="font-medium leading-[.85]">Share to web</p>
             <span className="text-sm text-gray-700">
-              Anyone with the link can read it
+              Anyone with the link can read this article
             </span>
           </div>
           <div>

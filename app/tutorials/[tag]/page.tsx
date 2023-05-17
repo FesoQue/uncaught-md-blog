@@ -29,9 +29,15 @@ const Tutorials = async ({ params }: CategoryProps) => {
     (article) => article.tag === params.tag
   );
 
+  const postTags = await getPostMetadata().map((post) => post.tag);
+
   return (
     <main>
-      <CategorypageHeader category={params?.tag} amount={articles?.length} />
+      <CategorypageHeader
+        category={params?.tag}
+        amount={articles?.length}
+        tags={postTags}
+      />
       <div className="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 p-4">
         {articles.map((article, i) => {
           return (

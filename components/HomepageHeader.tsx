@@ -4,7 +4,7 @@ import { montserrat } from "@/utils/utils";
 import useSpotlight from "@/hooks/useSpotlight";
 import { motion, useMotionTemplate } from "framer-motion";
 
-const HomepageHeader = () => {
+const HomepageHeader = ({ tags }: { tags: string[] }) => {
   const { mouseX, mouseY, handleMouseMove } = useSpotlight();
 
   return (
@@ -24,7 +24,7 @@ const HomepageHeader = () => {
           `,
         }}
       />
-      <Nav />
+      <Nav tags={tags} />
       <header className="grid min-h-[240px] place-content-center md:mb-8 md:min-h-[270px]">
         <div className="text-center">
           <h1
