@@ -5,9 +5,11 @@ import PostCards from "@/components/PostCards";
 import HomepageHeader from "@/components/HomepageHeader";
 
 const Home = () => {
-  const postTags = getPostMetadata().map((post) => post.tag);
+  const duplicateTags = getPostMetadata().map((post) => post.tag);
+  let postTags = [...new Set(duplicateTags)];
+
   return (
-    <main>
+    <main className="pb-10">
       <HomepageHeader tags={postTags} />
       <section className="mx-auto max-w-[1024px] p-4">
         <div className="w-full md:flex md:items-start md:gap-14 lg:gap-16">

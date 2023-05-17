@@ -7,6 +7,7 @@ export const SiteConfigSchema = z.object({
   links: z.object({
     github: z.string(),
   }),
+  icon: z.string().or(z.array(z.string())),
 });
 
 export const PostMetaSchema = z.object({

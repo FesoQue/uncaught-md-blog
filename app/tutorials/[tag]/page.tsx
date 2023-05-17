@@ -28,8 +28,8 @@ const Tutorials = async ({ params }: CategoryProps) => {
   const articles = await getPostMetadata().filter(
     (article) => article.tag === params.tag
   );
-
-  const postTags = await getPostMetadata().map((post) => post.tag);
+  const duplicateTags = await getPostMetadata().map((post) => post.tag);
+  let postTags = [...new Set(duplicateTags)];
 
   return (
     <main>

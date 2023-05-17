@@ -37,7 +37,8 @@ const PostPage = async ({ params }: PageProps) => {
   const slug = params?.slug;
   const post = await getPostContent(slug);
   const allPosts = await getPostMetadata().find((post) => post.slug === slug);
-  const postTags = await getPostMetadata().map((post) => post.tag);
+  const duplicateTags = await getPostMetadata().map((post) => post.tag);
+  let postTags = [...new Set(duplicateTags)];
 
   if (!allPosts || !post) {
     notFound();

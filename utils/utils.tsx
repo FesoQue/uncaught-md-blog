@@ -1,3 +1,4 @@
+import getPostMetadata from "@/lib/getposts";
 import { Montserrat, Work_Sans } from "next/font/google";
 
 export function capitalize(str: string) {

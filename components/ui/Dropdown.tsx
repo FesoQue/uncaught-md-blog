@@ -36,7 +36,7 @@ const CategoryMenu = ({ tags }: { tags: string[] }) => {
                 className="group relative flex h-[32px] select-none items-center rounded-[3px] px-[5px] pl-[25px] leading-none text-white outline-none data-[disabled]:pointer-events-none data-[highlighted]:text-[#E9C7A5]"
               >
                 <Link
-                  href={"/tutorials/react"}
+                  href={`/tutorials/${tag}`}
                   className="flex h-full w-full items-center"
                 >
                   {tag}
