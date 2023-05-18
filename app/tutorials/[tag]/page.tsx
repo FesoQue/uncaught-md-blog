@@ -32,7 +32,7 @@ const Tutorials = async ({ params }: CategoryProps) => {
   let postTags = [...new Set(duplicateTags)];
 
   return (
-    <main>
+    <main className="pb-10">
       <CategorypageHeader
         category={params?.tag}
         amount={articles?.length}

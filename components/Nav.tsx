@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import CategoryMenu from "./ui/Dropdown";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
+import { BsGlobe } from "react-icons/bs";
 import { RoughNotation } from "react-rough-notation";
 
 const Nav = ({ tags }: { tags: string[] }) => {
@@ -31,12 +32,15 @@ const Nav = ({ tags }: { tags: string[] }) => {
           </Link>
           <CategoryMenu tags={tags} />
         </div>
-        <div className="social-icons flex items-center">
-          <a href="https://github.com/FesoQue" className="mr-4">
+        <div className="social-icons flex items-center gap-4 md:gap-6">
+          <a href="https://github.com/FesoQue" className="">
             <AiFillGithub color="#fcfcfc" size={"28"} />
           </a>
           <a href="#" className="">
             <AiOutlineTwitter color="#fcfcfc" size={"28"} />
+          </a>
+          <a href="https://qdus.netlify.app/" className="hidden md:block">
+            <BsGlobe color="#fcfcfc" size={"22"} />
           </a>
         </div>
       </div>

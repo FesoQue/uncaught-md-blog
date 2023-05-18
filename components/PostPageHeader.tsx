@@ -28,7 +28,7 @@ const PostpageHeader = ({
           background: useMotionTemplate`
             radial-gradient(
               650px circle at ${mouseX}px ${mouseY}px,
-              rgba(147, 171, 97, .1),
+              rgba(147, 171, 97, .15),
               transparent 50%
             )
           `,

@@ -6,7 +6,17 @@ import { Analytics } from "@vercel/analytics/react";
 export const metadata = {
   title: `${siteConfig.name}`,
   description: `${siteConfig.description}`,
-  keywords: ["Next.js", "Markdown", "Tailwindcss", "Server Components", "zod"],
+  keywords: [
+    "Next.js",
+    "Markdown",
+    "Tailwindcss",
+    "Server Components",
+    "zod",
+    "blog",
+    "web development",
+    "web development blog",
+    "web development articles",
+  ],
   authors: [
     {
       name: "Adefeso Qudus",
@@ -21,6 +31,7 @@ export const metadata = {
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
+    apple: "/apple-icon.png",
   },
 };
 

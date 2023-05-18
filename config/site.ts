@@ -8,6 +8,4 @@ export const siteConfig: SiteConfig = {
   links: {
     github: "https://github.com/fesoque",
   },
-
-  icon: "./favicon.png",
 };
