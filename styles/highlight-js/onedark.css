@@ -47,7 +47,7 @@ code.hljs {
 pre:has(.hljs),
 .hljs {
   color: #c9d1d9;
-  background: #21241d;
+  background: #282c24;
 }
 
 .hljs::selection,

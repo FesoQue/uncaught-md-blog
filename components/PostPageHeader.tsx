@@ -35,10 +35,10 @@ const PostpageHeader = ({
         }}
       />
       <Nav tags={tags} />
-      <div className="grid min-h-[240px] place-content-center md:mb-8 md:min-h-[270px]">
+      <div className="grid min-h-[240px] place-content-center md:mb-8 md:min-h-[270px] px-2">
         <div className="text-center">
           <h1
-            className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}
+            className={`${montserrat.variable} max-w-[600px] mx-auto font-montserrat text-[28px] text-[#E9C7A5] capitalize md:text-3xl lg:text-4xl font-semibold mb-3 leading-[1.2]`}
           >
             {title}
           </h1>
@@ -49,7 +49,7 @@ const PostpageHeader = ({
             <span className="mr-1 text-sm">share</span>
             <ShareIcon className="w-3 h-3 text-black" />
           </button> */}
-          <SharePopover />
+          {/* <SharePopover /> */}
         </div>
       </div>
     </header>

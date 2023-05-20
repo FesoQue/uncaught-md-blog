@@ -10,6 +10,7 @@ import rehypeHighlight from "rehype-highlight";
 // import language
 import langJavascript from "highlight.js/lib/languages/javascript";
 import langTypescript from "highlight.js/lib/languages/typescript";
+import langBash from "highlight.js/lib/languages/bash";
 // import style for syntax highlighting
 import "../../../styles/highlight-js/onedark.css";
 
@@ -55,6 +56,7 @@ const PostPage = async ({ params }: PageProps) => {
             languages: {
               javascript: langJavascript,
               typescript: langTypescript,
+              bash: langBash,
             },
           },
         ],
@@ -63,7 +65,7 @@ const PostPage = async ({ params }: PageProps) => {
   };
 
   return (
-    <main className="relative">
+    <main className="relative pb-10">
       <PostpageHeader
         title={post.data.title}
         date={publishDate}

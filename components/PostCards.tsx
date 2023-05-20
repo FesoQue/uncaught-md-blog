@@ -26,7 +26,7 @@ const PostCards = ({ postProps }: PostType) => {
     >
       <Link href={`/posts/${postProps.slug}`} className="post-card block p-4">
         <h2
-          className={`${montserrat.variable} mb-2 font-montserrat text-[22px] font-semibold text-[#E9C7A5]`}
+          className={`${montserrat.variable} mb-2 font-montserrat text-[22px] font-semibold text-[#E9C7A5] capitalize`}
         >
           {postProps.title}
         </h2>

@@ -33,13 +33,17 @@ const Nav = ({ tags }: { tags: string[] }) => {
           <CategoryMenu tags={tags} />
         </div>
         <div className="social-icons flex items-center gap-4 md:gap-6">
-          <a href="https://github.com/FesoQue" className="">
+          <a href="https://github.com/FesoQue" title="Github">
             <AiFillGithub color="#fcfcfc" size={"28"} />
           </a>
-          <a href="#" className="">
+          <a href="#" title="twitter">
             <AiOutlineTwitter color="#fcfcfc" size={"28"} />
           </a>
-          <a href="https://qdus.netlify.app/" className="hidden md:block">
+          <a
+            href="https://qdus.netlify.app/"
+            className="hidden md:block"
+            title="Portfolio"
+          >
             <BsGlobe color="#fcfcfc" size={"22"} />
           </a>
         </div>

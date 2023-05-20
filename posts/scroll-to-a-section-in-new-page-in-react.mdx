@@ -1,0 +1,128 @@
+---
+title: "How to scroll to a section in new page using react"
+subtitle: "To scroll to a section in a new page in react, you can use the 'react-router-dom' library which allows you to define route & navigate to different pages in your application"
+date: "2023-05-18"
+tag: "react"
+---
+
+## SetUp
+
+We will need to setup React and this will be done using vite ( a build tool for modern web projects). Go to your CLI and install `vite`. Note, you'll need need [nodejs](https://nodejs.org/) install for the npm command line tools
+
+With NPM 7+:
+
+```bash
+npm create vite@latest my-react-app -- --template react
+```
+
+With Yarn:
+
+```bash
+yarn create vite@latest my-react-app -- --template react
+```
+
+Then run the following prompts
+
+```bash
+cd my-react-app
+
+npm install
+npm run dev
+```
+
+We can see the response we have below in our CLI, this shows that dev server is ready.
+
+```bash
+VITE v4.3.8  ready in 1025 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h to show help
+```
+
+One more package we need to install is `react-router-dom` which allows us to define route & navigate to different pages in your application"
+
+With NPM:
+
+```bash
+npm install react-router-dom
+```
+
+With Yarn:
+
+```bash
+yarn add react-router-dom
+```
+
+Our setup is pretty much done, now let's move forward
+
+## Our Folder Structure
+
+This is the folder structure found in `src/`
+
+```bash
+src
+|⁠—⁠—⁠— assets
+     |⁠—⁠—⁠— react.svg
+|⁠—⁠—⁠— App.css
+|⁠—⁠—⁠— App.jsx
+|⁠—⁠—⁠— index.css
+|⁠—⁠—⁠— main.jsx
+```
+
+We need to delete unsed file like `index.css` and we end up having something like this
+
+```bash
+src
+|⁠—⁠—⁠— assets
+     |⁠—⁠—⁠— react.svg
+|⁠—⁠—⁠— App.css
+|⁠—⁠—⁠— App.jsx
+|⁠—⁠—⁠— main.jsx
+```
+
+## Defining our routes
+
+In the `main.js` file, we import `BrowserRouter` from `react-router-dom` and wrap our whole app with it.
+
+```jsx
+//main.jsx
+
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+```
+
+We need to create two new files (`Home.jsx` and `About.jsx`) in our `src` folder. When that's done, let's go back to our `App.js` where we will import the `<Routes>` and `<Route>`components from `react-router-dom`.
+
+```jsx
+//App.jsx
+
+import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import About from "./About";
+import "./App.css";
+
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" index element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
+  );
+};
+
+export default App;
+```
+
+What we've done here is when the location changes we use `<Routes>` to looks through all its child routes to find the best match and renders that branch of the UI.
+
+## How It Works
+
+`Home.jsx` is the component that contains the link to the `about page`
