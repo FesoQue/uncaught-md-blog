@@ -125,4 +125,95 @@ What we've done here is when the location changes we use `<Routes>` to looks thr
 
 ## How It Works
 
-`Home.jsx` is the component that contains the link to the `about page`
+In our `Home.jsx` file, import `Link` component from `react-router-dom` and use it to define the link to the about page.
+
+> We use the # symbol followed by the `id` of the section we want to scroll to (section2 of the about page in this case).
+
+```jsx
+//Home.jsx
+
+import { Link } from "react-router-dom";
+
+const Home = () => {
+  return (
+    <div>
+      <Link to={"/about#section2"}>About Page</Link>
+    </div>
+  );
+};
+
+export default Home;
+```
+
+## Scrolling to section
+
+In the component that contains the section we want to scroll to (`About.jsx` in this example), We check if `id` is present in the URL. We can do this inside the `useEffect` Hook
+
+```jsx
+//About.jsx
+
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+const About = () => {
+  const location = useLocation();
+  const { hash } = location;
+
+  useEffect(() => {
+    if (hash) {
+      const section = document.querySelector(hash);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      window.scroll(0, 0);
+    }
+  }, [hash]);
+
+  return (
+    <div>
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "grid",
+          placeContent: "center",
+          background: "gray",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <h1>Section 1</h1>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum
+            odio, facilis iste quaerat quisquam ex mollitia impedit dolore.
+            Deleniti, optio!
+          </p>
+        </div>
+      </div>
+      <div
+        id="section2"
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "grid",
+          placeContent: "center",
+          background: "#fcfcfc",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <h1>Section 2</h1>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum
+            odio, facilis iste quaerat quisquam ex mollitia impedit dolore.
+            Deleniti, optio!
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default About;
+```
+
+We use the `useLocation` hook from `react-router-dom` to get access to the current location object, which includes the hash value of the URL (if any). Then we check if the hash value is present, scroll to `section2` otherwise scroll to top
