@@ -13,6 +13,9 @@ import langTypescript from "highlight.js/lib/languages/typescript";
 import langBash from "highlight.js/lib/languages/bash";
 // import style for syntax highlighting
 import "../../../styles/highlight-js/onedark.css";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkToc from "remark-toc";
 
 export async function generateMetadata({
   params,
@@ -48,7 +51,7 @@ const PostPage = async ({ params }: PageProps) => {
 
   const options = {
     mdxOptions: {
-      remarkPlugins: [remarkGfm],
+      remarkPlugins: [remarkGfm, remarkToc],
       rehypePlugins: [
         [
           rehypeHighlight,
@@ -60,6 +63,8 @@ const PostPage = async ({ params }: PageProps) => {
             },
           },
         ],
+        rehypeAutolinkHeadings,
+        rehypeSlug,
       ],
     },
   };
@@ -72,7 +77,7 @@ const PostPage = async ({ params }: PageProps) => {
         tags={postTags}
       />
       <div className="relative lg:flex lg:w-[80%] lg:ml-auto lg:items-start lg:gap-16 prose max-w-none p-5 prose-p:leading-[1.4]  prose-h2:text-[#E9C7A5] prose-h3:text-[#E9C7A5] prose-h4:text-[#E9C7A5] prose-p:text-white prose-a:text-white prose-strong:text-white  prose-li:text-white prose-th:text-white prose-td:text-white prose-code:text-white">
-        <article className="prose mx-auto max-w-[800px] prose-h1:text-[rgb(233,199,165)]">
+        <article className="prose mx-auto max-w-3xl prose-h1:text-[rgb(233,199,165)]">
           {/* @ts-expect-error Server Component*/}
           <MDXRemote source={post.content} options={options} />
         </article>
