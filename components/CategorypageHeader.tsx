@@ -26,7 +26,7 @@ const CategorypageHeader = ({
           background: useMotionTemplate`
             radial-gradient(
               650px circle at ${mouseX}px ${mouseY}px,
-              rgba(147, 171, 97, .15),
+              rgba(147, 171, 97, .18),
               transparent 50%
             )
           `,

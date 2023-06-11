@@ -19,7 +19,6 @@ import "../../../styles/highlight-js/onedark.css";
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import Link from "next/link";
 import { removeHashesAndWhitespace } from "@/utils/utils";
 
 export async function generateMetadata({
@@ -116,7 +115,7 @@ const PostPage = async ({ params }: PageProps) => {
 
               return (
                 <li key={heading}>
-                  <Link href={`#${hyphenatedString}`}>{outputString}</Link>
+                  <a href={`#${hyphenatedString}`}>{outputString}</a>
                 </li>
               );
             })}

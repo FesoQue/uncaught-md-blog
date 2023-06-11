@@ -18,7 +18,7 @@ const HomepageHeader = ({ tags }: { tags: string[] }) => {
           background: useMotionTemplate`
             radial-gradient(
               650px circle at ${mouseX}px ${mouseY}px,
-              rgba(147, 171, 97, .15),
+              rgba(147, 171, 97, .18),
               transparent 50%
             )
           `,
@@ -33,8 +33,8 @@ const HomepageHeader = ({ tags }: { tags: string[] }) => {
             Uncaught Type
           </h1>
           <p className="tracking-wider text-white md:text-base max-w-[500px] mx-auto px-5">
-            My series of reflections on the top technologies in frontend web
-            development.
+            My series of reflections on the top technologies I use in frontend
+            web development.
           </p>
         </div>
       </header>
