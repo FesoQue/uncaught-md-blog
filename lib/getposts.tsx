@@ -32,4 +32,12 @@ export const getPostContent = async (slug: string) => {
   return matterResult;
 };
 
+export const getPostHeadings = async (slug: string) => {
+  const folder = "posts/";
+  const file = `${folder}${slug}.mdx`;
+  const content = fs.readFileSync(file, "utf8");
+  const regexHeader = /#{2,6}.+/g;
+  const headings = content.match(regexHeader);
+  return headings;
+};
 export default getPostMetadata;

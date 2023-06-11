@@ -1,4 +1,7 @@
-import getPostMetadata, { getPostContent } from "@/lib/getposts";
+import getPostMetadata, {
+  getPostContent,
+  getPostHeadings,
+} from "@/lib/getposts";
 import { PageProps } from "@/types";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -13,9 +16,10 @@ import langTypescript from "highlight.js/lib/languages/typescript";
 import langBash from "highlight.js/lib/languages/bash";
 // import style for syntax highlighting
 import "../../../styles/highlight-js/onedark.css";
+import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkToc from "remark-toc";
+import Link from "next/link";
 
 export async function generateMetadata({
   params,
@@ -40,6 +44,8 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
 const PostPage = async ({ params }: PageProps) => {
   const slug = params?.slug;
   const post = await getPostContent(slug);
+  const headings = await getPostHeadings(slug);
+
   const allPosts = await getPostMetadata().find((post) => post.slug === slug);
   const duplicateTags = await getPostMetadata().map((post) => post.tag);
   let postTags = [...new Set(duplicateTags)];
@@ -63,8 +69,18 @@ const PostPage = async ({ params }: PageProps) => {
             },
           },
         ],
-        rehypeAutolinkHeadings,
         rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behaviour: "append",
+            properties: {
+              ariaHidden: true,
+              tabIndex: -1,
+              className: "hash-link",
+            },
+          },
+        ],
       ],
     },
   };
@@ -88,8 +104,15 @@ const PostPage = async ({ params }: PageProps) => {
           <h1 className="font-medium text-base capitalize mb-3">
             On this page
           </h1>
-          <p>Setup</p>
-          <p>Folder Structure</p>
+          <ul>
+            {headings?.map((heading) => {
+              return (
+                <li key={heading}>
+                  <Link href={heading}>{heading}</Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </main>
