@@ -20,6 +20,7 @@ import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import Link from "next/link";
+import { removeHashesAndWhitespace } from "@/utils/utils";
 
 export async function generateMetadata({
   params,
@@ -101,14 +102,17 @@ const PostPage = async ({ params }: PageProps) => {
           className="hidden lg:block lg:w-[400px] lg:sticky lg:top-10 lg:right-0 prose-h1:text-white prose-p:leading-[.8] prose-p:text-gray-200 prose-p:text-sm"
           style={{ borderLeft: "1px solid gray", paddingLeft: "1rem" }}
         >
-          <h1 className="font-medium text-base capitalize mb-3">
+          <h1 className="font-medium text-base capitalize mb-1">
             On this page
           </h1>
           <ul>
             {headings?.map((heading) => {
+              const outputString = removeHashesAndWhitespace(heading);
+              const lowercaseString = outputString.toLowerCase();
+              const hyphenatedString = lowercaseString.replace(/\s+/g, "-");
               return (
                 <li key={heading}>
-                  <Link href={heading}>{heading}</Link>
+                  <a href={`#${hyphenatedString}`}>{outputString}</a>
                 </li>
               );
             })}

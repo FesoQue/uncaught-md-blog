@@ -1,0 +1,1 @@
+for remark-toc to work, yiu must include '## Table of contents' in your  markdown file

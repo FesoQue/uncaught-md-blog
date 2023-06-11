@@ -12,6 +12,10 @@ export function getFormattedDate(dateString: string): string {
   );
 }
 
+export function removeHashesAndWhitespace(str: string) {
+  return str.replace(/#{2,6}\s*/g, "");
+}
+
 export const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
