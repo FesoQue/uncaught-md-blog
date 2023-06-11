@@ -14,8 +14,8 @@ const Home = () => {
       <section className="mx-auto max-w-[1024px] p-4">
         <div className="w-full md:flex md:items-start md:gap-14 lg:gap-16">
           <div className="md:w-[70%]">
-            <p className="mb-10 font-semibold uppercase tracking-wider text-[#C4D46C]">
-              Recently Published
+            <p className="mb-6 font-semibold uppercase tracking-wider text-[#C4D46C]">
+              Recent Articles
             </p>
             <div className="space-y-6 rounded-md shadow-sm ">
               {getPostMetadata().map((post, i) => {

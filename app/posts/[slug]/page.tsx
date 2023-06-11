@@ -109,10 +109,14 @@ const PostPage = async ({ params }: PageProps) => {
             {headings?.map((heading) => {
               const outputString = removeHashesAndWhitespace(heading);
               const lowercaseString = outputString.toLowerCase();
-              const hyphenatedString = lowercaseString.replace(/\s+/g, "-");
+              const hyphenatedString = lowercaseString
+                .replace(/[\W_]+$/, "") // remove non-alphanumeric characters (!, ?)  or underscores at the end of the string:
+                .replace(/'/g, "") // remove apostrophe from the string
+                .replace(/\s+/g, "-"); //join the string with hyphen
+
               return (
                 <li key={heading}>
-                  <a href={`#${hyphenatedString}`}>{outputString}</a>
+                  <Link href={`#${hyphenatedString}`}>{outputString}</Link>
                 </li>
               );
             })}

@@ -14,7 +14,6 @@
 body {
   background: #3e433e;
   overflow-x: hidden;
-  /* background-color: rgba(147, 171, 97, .15); */
 }
 .homepage-hero {
   clip-path: polygon(0 0, 100% 0%, 100% 88%, 0% 100%);

@@ -39,11 +39,7 @@ const Nav = ({ tags }: { tags: string[] }) => {
           <a href="#" title="twitter">
             <AiOutlineTwitter color="#fcfcfc" size={"28"} />
           </a>
-          <a
-            href="https://qdus.netlify.app/"
-            className="hidden md:block"
-            title="Portfolio"
-          >
+          <a href="https://qdus.netlify.app/" className="" title="Portfolio">
             <BsGlobe color="#fcfcfc" size={"22"} />
           </a>
         </div>

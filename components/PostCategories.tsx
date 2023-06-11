@@ -8,7 +8,7 @@ const PostCategories = () => {
 
   return (
     <div className="hidden md:block md:w-[30%]">
-      <p className="mb-8 font-semibold uppercase tracking-wider text-[#C4D46C]">
+      <p className="mb-6 font-semibold uppercase tracking-wider text-[#C4D46C]">
         Search blog by Category
       </p>
       <div>

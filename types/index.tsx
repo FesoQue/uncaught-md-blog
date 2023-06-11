@@ -15,7 +15,6 @@ export const PostMetaSchema = z.object({
   subtitle: z.string(),
   slug: z.string(),
   tag: z.string(),
-  // headings: z.array(z.string()),
 });
 
 const PagePropsSchema = z.object({
