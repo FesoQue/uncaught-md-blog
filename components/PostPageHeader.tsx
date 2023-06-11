@@ -3,8 +3,6 @@ import Nav from "./Nav";
 import { montserrat } from "@/utils/utils";
 import useSpotlight from "@/hooks/useSpotlight";
 import { motion, useMotionTemplate } from "framer-motion";
-import { ShareIcon } from "@heroicons/react/24/solid";
-import SharePopover from "./ui/Popover";
 
 const PostpageHeader = ({
   title,
@@ -49,7 +47,6 @@ const PostpageHeader = ({
             <span className="mr-1 text-sm">share</span>
             <ShareIcon className="w-3 h-3 text-black" />
           </button> */}
-          {/* <SharePopover /> */}
         </div>
       </div>
     </header>
