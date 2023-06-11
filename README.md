@@ -7,8 +7,9 @@ Uncaught Blog is an open-source modern blog template tool to share information o
 - [Next.js](https://nextjs.org/) – framework
 - [Typescript](https://www.typescriptlang.org/) – language
 - [Markdown](https://www.markdownguide.org/) – Content
+- [Radix Ui](https://radix-ui) – UI Component
 - [Tailwind](https://tailwindcss.com/) – CSS
-- [Vercel](https://vercel.com/) – hosting
+- [Vercel](https://vercel.com/) – hosting/Analytics
 
 ## Contributing
 
