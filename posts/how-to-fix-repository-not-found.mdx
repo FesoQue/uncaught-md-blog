@@ -1,0 +1,73 @@
+---
+title: "How to fix repository not found error when pushing to github"
+subtitle: "Repository not found error when pushing to github usually means that Git is unable to locate the repository you are trying to access or work with."
+date: "2023-06-25"
+tag: "git"
+---
+
+## Intro
+
+Repository not found error when pushing to github usually means that Git is unable to locate the repository you are trying to access or work with. This error can occur for various reasons, and the solution depends on the specific circumstances.
+
+## Most Common Causes
+
+Some of the most common causes for this error will be highlighted below:
+
+1. **The repository does not exist**: Make sure that the repository you are trying to push to actually exists. You can check by running the following command in your CLI:
+
+```bash
+git remote –v
+```
+
+You should see the URL of the remote repository if it exist, it looks like this `bashhttps://github.com/USERNAME/REPONAME’`
+
+2. **You do not have access to the repository**: If the repository is private, you need to be added as a collaborator and given ‘read and write’ access. You can check your access by trying to clone the repository. If you get an error message, you do not have access to the repository.
+
+3. **The remote origin is incorrect**: The remote origin is the URL of the remote repository that you are trying to connect to. If the remote origin is incorrect, you will get an error message. You can check the remote origin by running command in step 1. Then check the spelling of the repository URL. Typos are a common cause of this error.
+
+## Solutions
+
+If you have followed all of the steps above and you confirmed that the repository exist, you have read and write access to the repository and the remote origin is also correct and you are still getting the fatal: repository not found error, you can try this solutions below:
+
+## Clear All Github Accounts from Windows Credential
+
+If you use git on windows, try to clear your credentials by following these following steps:
+
+1. Press window key + R
+2. Type control and hit enter
+3. Click on User Account
+4. Click credential manager
+5. Click windows Credentials tab
+6. Remove any credentials with github
+
+## Authenticate with Personal Access Token
+
+Github recommends that you use token-based authentication, such as [personal access token or fine-grained personal access token](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for HTTPS Git operations on GitHub and if your repository uses an SSH remote URL you will need to [switch the remote from SSH to HTTPS](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories) To solve the problem, follow these steps:
+
+1. Check if the remote origin exists by running the following command:
+
+```bash
+git remote -v
+```
+
+2. Remove the remote origin by running the following command:
+
+```bash
+git remote remove origin
+```
+
+3. Generate a personal access token. [Here are the instructions](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+4. Re-add the remote origin by running the following command:
+
+```bash
+git remote add origin https://username:generated-token@github.com/username/reponame.git
+```
+
+5. Push your project to the remote repository by running the following command:
+
+```bash
+git push -u origin master/main
+```
+
+> NOTE: If you run into a problem after following these steps, make sure your token is not expired. If it is, regenerate your token and repeat step 4 above.

@@ -30,11 +30,11 @@ const HomepageHeader = ({ tags }: { tags: string[] }) => {
           <h1
             className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}
           >
-            Uncaught Type
+            Hi, I&apos;m Qudus
           </h1>
           <p className="tracking-wider text-white md:text-base max-w-[500px] mx-auto px-5">
-            My series of reflections on the top technologies I use in frontend
-            web development.
+            I like to share my series of reflections on the top technologies I
+            use in frontend web development.
           </p>
         </div>
       </header>
