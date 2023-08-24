@@ -1,0 +1,236 @@
+---
+title: "Simplifying React component composition with dot notation"
+subtitle: "Creating components is easy but creating reusable components is hard. In this article, you will learn how to create reusable pricing card components using the dot notation composition pattern."
+date: "2023-08-24"
+tag: "react"
+---
+
+## Introduction
+
+Creating components is easy but creating reusable components is hard. In this article, you will learn how to create reusable pricing card components using the dot notation composition pattern. This is the same pattern used by the Radix component library and it’s fairly easy to understand and implement.
+
+## Target Audience
+
+React developers (beginners and intermediate) who want to learn how to create components that are reusable, modular and maintainable with the dot notation.
+
+## Introduction To React Component Composition
+
+Components are small and manageable pieces of code that can be used in multiple places within your application
+
+Component composition is the act of combining these reusable components together to build the user interface of your application. These components are generally independent of each other making it easy for them to be maintained, styled, test and extend the UI of your application
+
+## Benefits Of React Component Composition
+
+Below are some of the benefits of component compositions in React.
+
+**Reusability**: Components can be reused across different parts of an application, reducing code duplication and saving development time.
+
+**Modularity**: This makes it easier to make changes to a component without affecting the rest of the application.
+Separation of concerns: Components can be responsible for a specific aspect of the UI or functionality, which keeps the code organized and easy to debug.
+
+**Collaboration**: Different team members can work on different components simultaneously without interfering with each other. This can speed up the development process and improve code quality.
+
+**Testing**: Smaller components are easier to test in isolatio because their is less code involved. This can help to improve the quality of the application and reduce the number of bugs.
+
+## Example
+
+We are going to build pricing card components using the dot notation pattern. This example uses React, TypeScript, and Tailwindcss and I assume you know how to install and run React applications. Without wasting much time, let’s jump straight into writing the code:
+
+```jsx
+// lib/utils.ts
+
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+The function above is an utility function that takes an arbitrary number of class values, combines them using the clsx utility library, and then merges the result using a function from the tailwind-merge library. This makes it easy to create and manage complex class names.
+
+> Note: Make sure the “clsx” and “tailwind-merge” libraries are both installed in your project.
+
+Now, let’s move on to implementing the core mechanism for this project
+
+```jsx
+// PricingCard.tsx
+
+import React from "react";
+import { cn } from "../lib/utils";
+
+interface PricingCardProps {
+  children: React.ReactNode;
+  className?: string;
+}
+export const PricingCard = ({
+  children,
+  className,
+  ...rest
+}: PricingCardProps) => {
+  return (
+    <article className={cn(className)} {...rest}>
+      {children}
+    </article>
+  );
+};
+
+PricingCard.Body = function PricingCardBody({
+  children,
+  className,
+  ...rest
+}: PricingCardProps) {
+  return (
+    <div className={cn(className)} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+PricingCard.Plan = function PricingCardPlan({
+  children,
+  className,
+  ...rest
+}: PricingCardProps) {
+  return (
+    <span className={cn(className)} {...rest}>
+      {children}
+    </span>
+  );
+};
+
+PricingCard.Cost = function PricingCardCost({
+  children,
+  className,
+  ...rest
+}: PricingCardProps) {
+  return (
+    <div className={cn("flex items-end gap-[10px] mb-6", className)} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+PricingCard.Text = function PricingCardText({
+  children,
+  className,
+  ...rest
+}: PricingCardProps) {
+  return (
+    <p className={cn(className)} {...rest}>
+      {children}
+    </p>
+  );
+};
+
+PricingCard.Feature = function PricingCardFeature({
+  children,
+  className,
+  ...rest
+}: PricingCardProps) {
+  return (
+    <div className={cn("flex items-center gap-2 mb-5", className)} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+PricingCard.Button = function PricingCardButton({
+  children,
+  className,
+  ...rest
+}: PricingCardProps) {
+  return (
+    <button className={cn(className)} {...rest}>
+      {children}
+    </button>
+  );
+};
+```
+
+From the code we have above, We export a PricingCard component that accept the followings props:
+
+**children**: This is used to pass any child components or elements to the PricingCard.
+**className**: This allows you to provide additional CSS classes to the PricingCard component.
+**...rest**: This is used to capture any other props that you pass to your component
+
+Using the dot notation pattern, we can then create a nested sub-component within the PricingCard like this:
+
+```jsx
+  PricingCard.Body = function PricingCardBody({ children, className, ...rest }: PricingCardProps) { ... }
+  PricingCard.Plan = function PricingCardPlan({ children, className, ...rest }: PricingCardProps) { ... }
+    PricingCard.Button = function PricingCardButton({ children, className, ...rest }: PricingCardProps) { ... }
+```
+
+The sub-component accepts similar props as the parent PricingCard component
+
+Lastly, Let’s compose the PricingCard with the sub-components.
+
+```jsx
+//App.tsx
+
+import { PricingCard } from "./component/PricingCard";
+import check_circle from "./assets/check-circle.svg";
+
+const App = () => {
+  return (
+    <main className="w-[90%] max-w-6xl mx-auto py-20">
+      <section className="grid grid-cols-fluid gap-5">
+        <PricingCard className="bg-white p-10 rounded-3xl shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px]">
+          <PricingCard.Body>
+            <PricingCard.Plan className="inline-block px-3 py-1 text-sm text-[#d445a0] bg-[#fa80cd] mb-5 font-semibold rounded-full bg-opacity-20">
+              Basic
+            </PricingCard.Plan>
+            <PricingCard.Cost>
+              <h2 className="text-[#231D4F] text-3xl font-semibold">$10</h2>
+              <span className="text-[#848199]">/month</span>
+            </PricingCard.Cost>
+            <PricingCard.Text className="text-[#848199] mb-5">
+              For small businesses that want to optimize web queries
+            </PricingCard.Text>
+            <PricingCard.Feature>
+              <img src={check_circle} alt="check circle" />
+              <p className="text-[#848199]">All limited links</p>
+            </PricingCard.Feature>
+            <PricingCard.Feature>
+              <img src={check_circle} alt="check circle" />
+              <p className="text-[#848199]">Own analytics platform</p>
+            </PricingCard.Feature>
+            <PricingCard.Feature>
+              <img src={check_circle} alt="check circle" />
+              <p className="text-[#848199]">Chat support</p>
+            </PricingCard.Feature>
+            <PricingCard.Feature>
+              <img src={check_circle} alt="check circle" />
+              <p className="text-[#848199]">Optimized hastags</p>
+            </PricingCard.Feature>
+            <PricingCard.Button className="w-full h-[45px] mt-5 text-center text-[#d445a0] bg-[#F496D1] bg-opacity-20 font-semibold rounded-full hover:bg-[#5243C2]">
+              Choose Plan
+            </PricingCard.Button>
+          </PricingCard.Body>
+        </PricingCard>
+      </section>
+    </main>
+  );
+};
+
+export default App;
+```
+
+By using this pattern, you are organizing the PricingCard content in a way where each sub-component is responsible for its own style, customization and logic making the code less easy to maintain. The final outcome of the UI is shown below:
+
+![Pricing Card](https://res.cloudinary.com/digfjfin9/image/upload/v1692843032/localhost_5173__1_nfcjej.png)
+
+## Benefits Of Using Dot Notation Pattern Over Props
+
+Just like any other feature, props are easy to add but hard to remove because they might break existing use cases. Each props you add increases complexity and adds weight to your component design. Adding a little too much props can lead to fixing a bug for one use case only to find that it regresses a different use case.
+
+With dot notation patterns, there are fewer edge cases to consider because there are less props involved. It also allows users to take charge and build out their uses cases with the sub-component. For example, let’s say you want to add ‘most popular’ to your pricing card component, what you have to do is expose `PricingCard.Badge` and the users can then build out their use cases with it. Other benefits of the dot notation pattern are highlighted below:
+
+**Clear Hierarchy**: As you can see from the example above, use of dot notation (e.g. PricingCard.Body, PricingCard.Button) to define sub-components creates a clear visual hierarchy that indicates which components are related and how they are intended to be used together.
+
+**Contextual Naming**: Naming sub-components with meaningful names related to what they do (e.g., .Body, .Plan, .Button) makes it easy for other developers to understand their role within the parent component.
+
+## Conclusion
+
+This article has demonstrated how to use component composition with dot notation to create a pricing card component. The source code for this tutorial can be on my [github](https://github.com/FesoQue/pricing-component-composition-with-dot-notation)
