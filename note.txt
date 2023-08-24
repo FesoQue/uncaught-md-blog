@@ -1,1 +1,26 @@
 for remark-toc to work, yiu must include '## Table of contents' in your  markdown file
+
+// og image
+  <div tw="flex flex-col w-full h-full bg-white py-10 px-16">
+        <div tw="flex flex-col">
+          <div tw="text-xl text-gray-600 mb-4">{publishDate}</div>
+          <div tw="text-4xl text-gray-600 font-bold mb-4">
+            {capitalize(blogTitle)}
+          </div>
+          <div tw="text-lg text-gray-600 mb-6">{description}</div>
+          <div tw="flex items-center">
+            <div
+              tw="w-18 h-18 mr-5 rounded-full"
+              style={{
+                backgroundImage: `url(https://res.cloudinary.com/digfjfin9/image/upload/v1692851188/65207356_o19nk0.png)`,
+                backgroundSize: "90% 100%",
+                backgroundPosition: "center",
+              }}
+            ></div>
+            <div tw="flex flex-col">
+              <div tw="text-lg text-gray-600 font-semibold">Adefeso Qudus</div>
+              <div tw="text-lg text-gray-600">Frontend Developer</div>
+            </div>
+          </div>
+        </div>
+      </div>
