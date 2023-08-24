@@ -26,15 +26,16 @@ Below are some of the benefits of component compositions in React.
 **Reusability**: Components can be reused across different parts of an application, reducing code duplication and saving development time.
 
 **Modularity**: This makes it easier to make changes to a component without affecting the rest of the application.
-Separation of concerns: Components can be responsible for a specific aspect of the UI or functionality, which keeps the code organized and easy to debug.
+
+**Separation of concerns**: Components can be responsible for a specific aspect of the application UI or functionality, which helps keep the code organized and easy to debug.
 
 **Collaboration**: Different team members can work on different components simultaneously without interfering with each other. This can speed up the development process and improve code quality.
 
-**Testing**: Smaller components are easier to test in isolatio because their is less code involved. This can help to improve the quality of the application and reduce the number of bugs.
+**Testing**: Smaller components are easier to test in isolation because their is less code involved.
 
 ## Example
 
-We are going to build pricing card components using the dot notation pattern. This example uses React, TypeScript, and Tailwindcss and I assume you know how to install and run React applications. Without wasting much time, let’s jump straight into writing the code:
+In this example, we are going to build pricing card components using the dot notation pattern. This example uses React, TypeScript, and Tailwindcss and I assume you know how to install and run React applications. Without wasting much time, let’s jump straight into writing the code:
 
 ```jsx
 // lib/utils.ts
@@ -49,7 +50,7 @@ export function cn(...inputs: ClassValue[]) {
 
 The function above is an utility function that takes an arbitrary number of class values, combines them using the clsx utility library, and then merges the result using a function from the tailwind-merge library. This makes it easy to create and manage complex class names.
 
-> Note: Make sure the “clsx” and “tailwind-merge” libraries are both installed in your project.
+> Make sure the “clsx” and “tailwind-merge” libraries are both installed in your project.
 
 Now, let’s move on to implementing the core mechanism for this project
 
@@ -162,9 +163,9 @@ Using the dot notation pattern, we can then create a nested sub-component within
     PricingCard.Button = function PricingCardButton({ children, className, ...rest }: PricingCardProps) { ... }
 ```
 
-The sub-component accepts similar props as the parent PricingCard component
+> The sub-component accepts similar props as the parent PricingCard component
 
-Lastly, Let’s compose the PricingCard with the sub-components.
+Lastly in out App.js, Let’s compose the PricingCard with the sub-components.
 
 ```jsx
 //App.tsx
