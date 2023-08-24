@@ -33,7 +33,7 @@ const PostpageHeader = ({
         }}
       />
       <Nav tags={tags} />
-      <div className="grid min-h-[240px] place-content-center md:mb-8 md:min-h-[270px] px-2">
+      <div className="grid min-h-[250px] place-content-center md:mb-8 md:min-h-[280px] px-2">
         <div className="text-center">
           <h1
             className={`${montserrat.variable} max-w-[600px] mx-auto font-montserrat text-[28px] text-[#E9C7A5] capitalize md:text-3xl lg:text-4xl font-semibold mb-3 leading-[1.2]`}

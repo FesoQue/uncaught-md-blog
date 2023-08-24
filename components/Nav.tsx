@@ -27,7 +27,7 @@ const Nav = ({ tags }: { tags: string[] }) => {
               color="#C4D46C"
               padding={5}
             >
-              Uncaught
+              QWrites
             </RoughNotation>
           </Link>
           <CategoryMenu tags={tags} />
