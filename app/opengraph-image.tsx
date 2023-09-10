@@ -48,7 +48,7 @@ export default async function og() {
             fontFamily: "Worksans SemiBold",
           }}
         >
-          Uncaught
+          QWrites
         </div>
         <div
           style={{
@@ -63,7 +63,7 @@ export default async function og() {
             textAlign: "center",
           }}
         >
-          Uncaught Blog
+          Qwrites Blog
         </div>
       </div>
     ),

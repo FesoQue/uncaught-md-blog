@@ -52,7 +52,7 @@ export default async function og({ params }: CategoryProps) {
             fontFamily: "Worksans SemiBold",
           }}
         >
-          Uncaught
+          Qwrites
         </div>
         <div
           style={{

@@ -53,7 +53,7 @@ export default async function og({ params }: PageProps) {
             fontFamily: "Worksans SemiBold",
           }}
         >
-          Qwrite
+          Qwrites
         </div>
         <div
           style={{
