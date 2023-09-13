@@ -33,7 +33,7 @@ const PostpageHeader = ({
         }}
       />
       <Nav tags={tags} />
-      <div className="grid min-h-[250px] place-content-center md:mb-8 md:min-h-[280px] px-2">
+      <div className="grid min-h-[300px] place-content-center md:mb-8 md:min-h-[280px] px-2">
         <div className="text-center">
           <h1
             className={`${montserrat.variable} max-w-[600px] mx-auto font-montserrat text-[28px] text-[#E9C7A5] capitalize md:text-3xl lg:text-4xl font-semibold mb-3 leading-[1.2]`}
@@ -43,10 +43,6 @@ const PostpageHeader = ({
           <p className="uppercase tracking-wider text-white text-sm md:text-base mb-3">
             {date}
           </p>
-          {/* <button className="min-w-[75px] bg-white h-[28px] rounded-full font-semibold flex items-center mx-auto justify-center">
-            <span className="mr-1 text-sm">share</span>
-            <ShareIcon className="w-3 h-3 text-black" />
-          </button> */}
         </div>
       </div>
     </header>

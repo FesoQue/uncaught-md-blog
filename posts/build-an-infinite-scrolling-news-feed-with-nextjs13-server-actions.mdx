@@ -1,0 +1,297 @@
+---
+title: "Build an infinite scrolling news feed with NextJs 13 Server Action"
+subtitle: "Infinite scroll is a technique that allows for infinite scrolling of content on a website by loading and displaying more content as the user scrolls down a page."
+date: "2023-09-11"
+tag: "nextjs"
+---
+
+## Introduction
+
+Infinite scroll is a technique that allows for infinite scrolling of content on a website by loading and displaying more content as the user scrolls down a page. This creates a seamless and uninterrupted browsing experience as it helps prevent the hassle of navigating through pages just to view content. Facebook, Twitter and Pinterest are popularly known for using this technique to asynchronously fetch more posts as users scroll to the end of their timeline.
+
+The live version for this tutorial is [here](https://infinite-scroll-news-feed.vercel.app/)
+
+## Target Audience
+
+This tutorial is for beginner and intermediate NextJs developer who wants to learn how to implement infinite scroll with NextJs 13 server actions. Of course, you don’t have to be an expert to be able to follow along with this tutorial.
+
+## What is Server Action
+
+According to the NextJs 13 [docs](https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations), with Server Actions, you don't need to manually create API endpoints. Instead, you define asynchronous server functions that can be called directly from your components. Server Actions can be defined in Server Components or called from Client Components.
+
+In simple terms, you can think of server action as an asynchronous javascript function that runs on the server. It is still an experimental alpha feature in NextJs 13 which you can enable in your `next.config.js` file:
+
+```js
+module.exports = {
+  experimental: {
+    serverActions: true,
+  },
+};
+```
+
+## Example
+
+In this example, we are going to build an infinite scrolling news feed. This example uses NextJs 13, TypeScript, News Api ([link here](https://newsapi.org/)) and Tailwindcss. I will assume you already know how to install and run NextJs applications and without wasting much time, let’s jump straight into it.
+
+> You'll need to register on [News Api](https://newsapi.org/) website to get your own api key. You can also see the live version of the tutorial [here](https://infinite-scroll-news-feed.vercel.app/)
+
+Moving forward, let’s create the following files in our Nextjs app directories:
+
+- fetch-news.ts
+- useInView.tsx
+- LoadMoreArticle.jsx
+
+If you have your api key, create a `.env.local` at the root directory of your application and add your API key inside:
+
+```jsx
+// .env.local
+
+NEXT_PUBLIC_API_KEY = ***************;
+```
+
+At the end, our folder structure should look like this:
+![folder structure](https://res.cloudinary.com/digfjfin9/image/upload/v1694408394/file-structure_noekol.png)
+
+We will start implementing the core mechanism of our application by fetching data from our News API with NextJs 13 Server Action.
+
+```jsx
+//fetch-news.ts
+
+"use server";
+
+export async function fetchNews({
+  limit,
+  offset,
+}: {
+  limit: number,
+  offset: number,
+}) {
+  const res = await fetch(
+    `https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=${limit}&page=${offset}&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const { articles, totalResults } = await res.json();
+
+  return { articles, totalResults };
+}
+```
+
+Let's do a breakdown of the code above, we declared the `use server` directive at the top of the file to let NextJs know that we are using `server actions`. Then we proceed to define a server action that fetches news articles from a News API that allows us to customize the number of articles we want to retrieve (known as limit) and where we want to start in the result set (known as offset). We will also handle errors and return `articles and totalResults` from the retrieved data.
+
+At the background, NextJs will initiate an HTTP POST request to our endpoint using the fetch API. Even when our client calls the server action, the POST request is still being made on the server.
+
+> We already know that server Action can be defined in Server Components or called from Client Components. In our case, the server action will be used both in the server and client component hence why we define the server action in a separate file ( `fetch-news.ts`) so that our client and server component can have access to it.
+
+Next step is to invoke our server action and retrieve the article data from it in `page.tsx` file
+
+```jsx
+//page.tsx
+
+import LoadMoreArticles from "./LoadMoreArticles";
+import { fetchNews } from "./fetch-news";
+import Link from "next/link";
+
+export default async function Home() {
+  const { articles } = await fetchNews({
+    limit: 10,
+    offset: 1,
+  });
+
+  return (
+    <section className="max-w-4xl mx-auto">
+      <h1 className="text-3xl mb-10 text-center font-semibold">
+        Technology News
+      </h1>
+      {articles?.map((article: { title: string, url: string }, i: number) => {
+        return (
+          <Link
+            key={i}
+            href={article.url}
+            className="hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <article className="flex items-center bg-white p-4 mb-4 rounded shadow">
+              <h2>{article.title}</h2>
+            </article>
+          </Link>
+        );
+      })}
+      <LoadMoreArticles />
+    </section>
+  );
+}
+```
+
+We called the server action asynchronously with an object as an argument. The object has two properties:
+
+- limit: 10: This sets the limit for the number of news articles to be retrieved to 10. It specifies that you want to fetch 10 articles.
+- offset: 1: This sets the offset for where the retrieval should start to 1.
+
+We then go on to display our first 10 news article that we retrieved from our server action
+
+![articles](https://res.cloudinary.com/digfjfin9/image/upload/v1694408395/first-10-articles_qaapm6.png)
+
+## Implementing the infinite scroll
+
+What we want to achieve now is that when we scroll to the end of the first 10 articles, we want to display a loading spinner to show that we are expecting more article content from our API.
+
+So let’s render a loading spinner in LoadMoreArticles.jsx.
+
+```jsx
+//LoadMoreArticle.tsx
+
+import ClipLoader from "react-spinners/ClipLoader";
+
+const LoadMoreArticles = () => {
+  return (
+    <div>
+      <div className="flex justify-center">
+        <ClipLoader
+          color={"#444"}
+          loading={true}
+          size={40}
+          aria-label="Loading Spinner"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default LoadMoreArticles;
+```
+
+This result shows a loading spinner at the end of the articles
+
+![articles with loading spinner](https://res.cloudinary.com/digfjfin9/image/upload/v1694408394/loading_dsfiua.png)
+
+Our next task is to request for more articles from the API when the loading spinner is visible on our screen.
+
+But how do we detect the visibility of the loading spinner?
+
+So in our useInView.tsx, we will create a custom hook that uses the Intersection Observer API to track whether the loading spinner is visible within the viewport or not
+
+```jsx
+//useInView.tsx
+
+"use client";
+import React, { useState, useEffect, RefObject } from "react";
+
+const useInView = (ref: RefObject<HTMLElement>) => {
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (ref?.current) {
+      const observer = new IntersectionObserver(([entry]) => {
+        setIsInView(entry.isIntersecting);
+      });
+
+      observer.observe(ref.current);
+
+      return () => observer.disconnect();
+    }
+  }, [ref]);
+
+  return { isInView };
+};
+
+export default useInView;
+```
+
+Let's breakdown the code above, we simply perform a check to see if our referenced element (loading spinner) exists in the DOM. If it does, we create a new `IntersectionObserver` that tracks when our loading spinners enters or exits the viewport, we then update the isInView state variable based on the entry.isIntersecting value which will return a boolean value of `true` if the loading spinner intersects with the intersection observer's root or `false` if its not intersecting
+
+Now that we can successfully track the visibility of our loading spinner, our next task is to request for more articles from our API when the loading spinner is visible, we then go on to display the results in our infinite scrolling component which is `LoadMoreArticles.tsx`. This component will be responsible for displaying more article contents on our screen.
+
+```jsx
+//LoadMoreArticles
+
+"use client";
+import { useEffect, useRef, useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
+import useInView from "./useInView";
+import { fetchNews } from "./fetch-news";
+import Link from "next/link";
+
+interface Article {
+  title: string;
+  url: string;
+}
+
+interface DataType {
+  total: number | null;
+  articles: Article[] | [];
+}
+const LoadMoreArticles = () => {
+  const container = useRef<HTMLDivElement | null>(null);
+  const { isInView } = useInView(container);
+  const [articleData, setArticleData] = useState<DataType>({
+    total: null,
+    articles: [],
+  });
+
+  const offset = (articleData?.articles?.length + 20) / 10;
+  const remainder = (articleData?.total as number) % 2;
+
+  useEffect(() => {
+    if (isInView) {
+      fetchNews({
+        limit: 10,
+        offset: offset,
+      }).then((res) => {
+        setArticleData((prevData) => ({
+          total: res?.totalResults,
+          articles: [...prevData.articles, ...res?.articles],
+        }));
+      });
+    }
+  }, [isInView]);
+
+  return (
+    <div>
+      {articleData.articles?.map((article, i) => {
+        return (
+          <Link
+            key={i}
+            href={article.url}
+            className="hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <article className="flex items-center bg-white p-4 mb-4 rounded shadow">
+              <h2>{article.title}</h2>
+            </article>
+          </Link>
+        );
+      })}
+
+      {articleData.articles?.length - remainder !==
+      (articleData?.total as number) - 20 ? (
+        <div ref={container} className="flex justify-center">
+          <ClipLoader
+            color={"#444"}
+            loading={true}
+            size={40}
+            aria-label="Loading Spinner"
+          />
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
+
+export default LoadMoreArticles;
+```
+
+let’s breakdown down the code, we simply retrieve 10 new articles from our server action by dynamically changing the `offset` value each time the loading spinner is visible on our screen. At the end, we also hide our loading spinner when we have successfully retrieved all the articles from the API. Right now, we should have a perfect and working infinite scrolling news feed.
+
+A quick look into the network tabs shows that we are indeed making our request from nextjs server action.
+
+![browser network tab](https://res.cloudinary.com/digfjfin9/image/upload/v1694408394/network_utzetm.png)
+
+## Conclusion
+
+In this article, you’ve learned what server action is and how you can use it to build an infinite scrolling news feed. There is a whole lot to what server action can do apart from fetching data, you can check the NextJs [docs](https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations) to see other examples. The source for this tutorial can be found here on my [github](https://github.com/FesoQue/infinite-scroll-with-nextjs13-server-action) and you can also checkout the live [version](https://infinite-scroll-news-feed.vercel.app/)

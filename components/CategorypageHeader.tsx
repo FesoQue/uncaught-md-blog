@@ -33,7 +33,7 @@ const CategorypageHeader = ({
         }}
       />
       <Nav tags={tags} />
-      <header className="grid min-h-[250px] place-content-center md:mb-8 md:min-h-[280px]">
+      <div className="grid min-h-[300px] place-content-center md:mb-8 md:min-h-[280px]">
         <div className="text-center">
           <h1
             className={`${montserrat.variable} font-montserrat text-3xl text-[#E9C7A5] capitalize md:text-3xl lg:text-5xl font-semibold mb-3`}
@@ -44,7 +44,7 @@ const CategorypageHeader = ({
             {amount} Article(s)
           </p>
         </div>
-      </header>
+      </div>
     </header>
   );
 };

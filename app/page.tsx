@@ -13,17 +13,17 @@ const Home = () => {
       <HomepageHeader tags={postTags} />
       <section className="mx-auto max-w-[1024px] p-4">
         <div className="w-full md:flex md:items-start md:gap-14 lg:gap-16">
-          <div className="md:w-[70%]">
+          <div className="w-full">
             <p className="mb-6 font-semibold uppercase tracking-wider text-[#C4D46C]">
               Recent Articles
             </p>
-            <div className="space-y-6 rounded-md shadow-sm ">
+            <div className="grid md:grid-cols-2 gap-6 rounded-md shadow-sm ">
               {getPostMetadata().map((post, i) => {
                 return <PostCards key={i} postProps={post} />;
               })}
             </div>
           </div>
-          <PostCategories />
+          {/* <PostCategories /> */}
         </div>
       </section>
     </main>
